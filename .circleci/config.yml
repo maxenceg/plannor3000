@@ -1,0 +1,179 @@
+defaults-frontend: &defaults-frontend
+  docker:
+  - image: circleci/node:10.13.0
+
+defaults-backend: &defaults-backend
+    docker:
+    - image: chialab/php:7.2
+    - image: circleci/postgres:9.6-alpine-ram
+      environment:
+      - POSTGRES_DB=francis
+      - POSTGRES_USER=francis
+      - POSTGRES_PASSWORD=Ge0rgesMoustaki
+
+version: 2
+jobs:
+  npm-install:
+    <<: *defaults-frontend
+    working_directory: ~/project
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project/client
+      - restore_cache:
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
+      - run:
+          working_directory: client
+          name: Install front dependencies
+          command: npm install
+      - run:
+          working_directory: client
+          name: Install bundle size
+          command: npm install bundlesize --save-dev
+      - save_cache:
+          key: node-modules-cache-{{ checksum "client/yarn.lock" }}
+          paths:
+            - client/node_modules
+      - persist_to_workspace:
+          root: ~/project/client
+          paths:
+            - node_modules
+
+  frontend-tests:
+    <<: *defaults-frontend
+    working_directory: ~/project
+    environment:
+      NODE_ENV: test
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project/client
+      - run:
+          working_directory: client
+          name: Unit test with coverage
+          command: npm run test:coverage
+      - store_artifacts:
+          path: client/coverage
+
+  frontend-bundlesize:
+    <<: *defaults-frontend
+    working_directory: ~/project
+    environment:
+      NODE_ENV: prod
+    steps:
+      - checkout
+      - attach_workspace:
+          at: ~/project/client
+      - run:
+          working_directory: client
+          name: Check bundle size
+          command: npm run build && ./node_modules/.bin/bundlesize
+      - store_artifacts:
+          path: client/coverage
+
+  composer-install:
+    <<: *defaults-backend
+    working_directory: ~/repo
+    steps:
+    - checkout
+    - attach_workspace:
+          at: ~/repo/api
+    - restore_cache:
+          key: composer-cache-{{ checksum "api/composer.lock" }}
+    - run:
+          working_directory: api
+          name: Copy env file
+          command: cp .env.dist .env
+    - run:
+          working_directory: api
+          name: Install composer dependencies
+          command: composer install -n --prefer-dist
+    - save_cache:
+          key: composer-cache-{{ checksum "api/composer.lock" }}
+          paths:
+          - api/vendor
+    - persist_to_workspace:
+          root: ~/repo/api
+          paths:
+          - vendor
+          - .env
+
+  backend-static-tests:
+      <<: *defaults-backend
+      working_directory: ~/repo
+      steps:
+      - checkout
+      - attach_workspace:
+            at: ~/repo/api
+      - restore_cache:
+            key: composer-cache-{{ checksum "api/composer.lock" }}
+      - run:
+            working_directory: api
+            name: Run static analysis
+            command: ./vendor/bin/phpstan analyse src
+
+  backend-functional-tests:
+      <<: *defaults-backend
+      working_directory: ~/repo
+      steps:
+      - checkout
+      - attach_workspace:
+            at: ~/repo/api
+      - restore_cache:
+            key: composer-cache-{{ checksum "api/composer.lock" }}
+      - restore_cache:
+            key: phpunit-cache-{{ checksum "api/composer.lock" }}
+      - run:
+            working_directory: api
+            name: Run migrations
+            command: bin/console do:mi:mi --no-interaction --env=test
+      - run:
+            working_directory: api
+            name: Run functional tests
+            command: bin/phpunit --configuration phpunit.xml.circle --testsuite Functional tests
+      - save_cache:
+          key: phpunit-cache-{{ checksum "api/composer.lock" }}
+          paths:
+          - api/bin/.phpunit
+      - persist_to_workspace:
+          root: ~/repo/api
+          paths:
+          - bin/.phpunit
+
+  backend-linter:
+      <<: *defaults-backend
+      working_directory: ~/repo
+      steps:
+      - checkout
+      - attach_workspace:
+            at: ~/repo/api
+      - restore_cache:
+            key: composer-cache-{{ checksum "api/composer.lock" }}
+      - run:
+            working_directory: api
+            name: Run static analysis
+            command: ./vendor/bin/php-cs-fixer fix --config=./.php_cs.dist --dry-run -v
+
+workflows:
+  version: 2
+  frontend:
+    jobs:
+      - npm-install
+      - frontend-tests:
+          requires:
+            - npm-install
+      - frontend-bundlesize:
+          requires:
+            - npm-install
+  backend:
+    jobs:
+      - composer-install
+      - backend-linter:
+          requires:
+            - composer-install
+      - backend-static-tests:
+          requires:
+            - composer-install
+      - backend-functional-tests:
+          requires:
+            - composer-install

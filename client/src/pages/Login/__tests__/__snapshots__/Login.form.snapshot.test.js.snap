@@ -1,0 +1,92 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`The form component should render correctly when submitting 1`] = `
+<Form>
+  <div>
+    <C
+      component={[Function]}
+      label="Username"
+      name="username"
+      type="text"
+    />
+  </div>
+  <div>
+    <C
+      component={[Function]}
+      label="Password"
+      name="password"
+      type="password"
+    />
+  </div>
+  <WithStyles(Button)
+    color="primary"
+    disabled={true}
+    size="medium"
+    type="submit"
+    variant="outlined"
+  >
+    Connect
+  </WithStyles(Button)>
+</Form>
+`;
+
+exports[`The form component should render correctly with errors 1`] = `
+<Form>
+  <div>
+    <C
+      component={[Function]}
+      error="Username is required"
+      label="Username"
+      name="username"
+      type="text"
+    />
+  </div>
+  <div>
+    <C
+      component={[Function]}
+      label="Password"
+      name="password"
+      type="password"
+    />
+  </div>
+  <WithStyles(Button)
+    color="primary"
+    disabled={false}
+    size="medium"
+    type="submit"
+    variant="outlined"
+  >
+    Connect
+  </WithStyles(Button)>
+</Form>
+`;
+
+exports[`The form component should render correctly with no error 1`] = `
+<Form>
+  <div>
+    <C
+      component={[Function]}
+      label="Username"
+      name="username"
+      type="text"
+    />
+  </div>
+  <div>
+    <C
+      component={[Function]}
+      label="Password"
+      name="password"
+      type="password"
+    />
+  </div>
+  <WithStyles(Button)
+    color="primary"
+    disabled={false}
+    size="medium"
+    type="submit"
+    variant="outlined"
+  >
+    Connect
+  </WithStyles(Button)>
+</Form>
+`;

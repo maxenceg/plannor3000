@@ -1,0 +1,9 @@
+{
+  "extends": [
+    "config:base"
+  ],
+  "labels": ["renovate"],
+  "major": {
+    "labels": ["major"]
+  }
+}
