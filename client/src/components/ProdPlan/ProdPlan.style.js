@@ -1,12 +1,9 @@
 const styles = {
-  grid: {
-    display: 'grid',
-    gridTemplateColumns: 'auto auto auto',
-  },
-  gridItem: {
-    display: 'inline-grid',
+  container: {
+    display: 'flex',
     width: '100%',
-    height: 75,
+    overflowX: 'scroll',
+    justifyContent: 'center',
   },
 };
 
