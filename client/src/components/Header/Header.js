@@ -7,8 +7,7 @@ import en from 'react-intl/locale-data/en';
 import frMessages from 'translations/fr.json';
 import enMessages from 'translations/en.json';
 import { flattenMessages } from 'services/i18n/intl';
-
-import Header from '../Header';
+import styles from './Header.style';
 
 const locales = {
   fr: flattenMessages(frMessages),
@@ -17,18 +16,12 @@ const locales = {
 
 addLocaleData([...fr, ...en]);
 
-// type Props = {
-//   children: React$Element<*>,
-// };
-
-export default class Root extends React.Component {
+export default class Header extends React.Component {
   render() {
-    const { children } = this.props;
     return (
       <IntlProvider locale="fr" messages={locales.fr}>
-        <div>
-          <Header />
-          {children}
+        <div style={styles.header}>
+            Plannor 3000
         </div>
       </IntlProvider>
     );
