@@ -1,11 +1,9 @@
 const styles = {
-  header: {
-    backgroundColor: "#2196f3",
-    padding: 15,
-    fontSize: 20,
-    fontFamily: "Roboto",
-    color: "white",
-  }
+  rootContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: '100vh',
+  },
 };
 
 export default styles;
