@@ -17,6 +17,7 @@ const styles = {
     alignItems: 'center',
   },
   grid: {
+    position: 'relative',
     flex: '1 1 auto',
     marginTop: 20,
     display: 'flex',
