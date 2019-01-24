@@ -1,17 +1,48 @@
 // @flow
 import React from 'react';
 import PlanColumn from '../PlanColumn';
+import ColumnHeader from '../ColumnHeader';
+import HourLine from '../HourLine';
 import styles from './ProdPlan.style';
 
 export default class ProdPlan extends React.Component {
   render() {
     const dayStartTime = { hour: 9, minute: 30 };
     const dayEndTime = { hour: 18, minute: 0 };
+    const hoursOfTheDay = [
+      { id: 1, hour: 9, minute: 30 },
+      { id: 2, hour: 10, minute: 30 },
+      { id: 3, hour: 11, minute: 30 },
+      { id: 4, hour: 12, minute: 30 },
+      { id: 5, hour: 14, minute: 0 },
+      { id: 6, hour: 15, minute: 0 },
+      { id: 7, hour: 16, minute: 0 },
+      { id: 8, hour: 17, minute: 0 },
+    ];
     return (
       <div style={{ ...this.props.style, ...styles.container }}>
-        <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
-        <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
-        <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
+        <div style={styles.headerContainer}>
+          <div style={styles.columnHeadersContainer}>
+            <ColumnHeader style={styles.columnHeader} />
+            <ColumnHeader style={styles.columnHeader} />
+            <ColumnHeader style={styles.columnHeader} />
+          </div>
+        </div>
+        <div style={styles.planContainer}>
+          {hoursOfTheDay.map(time => (
+            <HourLine
+              key={time.id}
+              time={time}
+              dayStartTime={dayStartTime}
+              dayEndTime={dayEndTime}
+            />
+          ))}
+          <div style={styles.columnsContainer}>
+            <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
+            <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
+            <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
+          </div>
+        </div>
       </div>
     );
   }
