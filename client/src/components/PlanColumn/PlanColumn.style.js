@@ -1,9 +1,9 @@
 const styles = {
   container: {
     display: 'flex',
+    overflow: 'hidden',
     flexDirection: 'column',
-    margin: '10px 5px',
-    padding: 7,
+    margin: '0px 5px 10px 5px',
     MozBoxShadow: '2px 2px 10px #cccccc',
     WebkitBoxShadow: '2px 2px 10px #cccccc',
     boxShadow: '2px 2px 10px #cccccc',
@@ -19,11 +19,9 @@ const styles = {
   grid: {
     position: 'relative',
     flex: '1 1 auto',
-    marginTop: 20,
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
-    overflow: 'none',
   },
   gridItem: {
     display: 'inline-grid',
