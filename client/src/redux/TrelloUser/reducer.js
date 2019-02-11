@@ -6,6 +6,11 @@ export const initialState = {
     username: null,
     boards: [],
     selectedBoard: '',
+    columns: [],
+    dailyGoalsColumn: {
+      id: '',
+      cards: {},
+    },
   },
   error: null,
   isLoading: false,
@@ -53,6 +58,33 @@ export default function reducer(state = initialState, action) {
         user: {
           ...state.user,
           selectedBoard: action.payload.board,
+        },
+      };
+    case constants.FETCH_TRELLO_USER_COLUMNS.SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          columns: action.payload.columns,
+        },
+      };
+    case constants.ADD_TRELLO_USER_DAILY_GOALS_COLUMN:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          dailyGoalsColumn: { ...state.user.dailyGoalsColumn, id: action.payload.column },
+        },
+      };
+    case constants.FETCH_TRELLO_USER_DAILY_GOALS_CARDS.SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          dailyGoalsColumn: {
+            ...state.user.dailyGoalsColumn,
+            cards: action.payload.cards,
+          },
         },
       };
     default:
