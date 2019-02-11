@@ -9,16 +9,14 @@ import { combineReducers } from 'redux';
 /**
  * Example of the Avatar module which should export a reducer.
  */
-import { reducer as avatar } from './Avatar';
-import { reducer as login } from './Login';
 
-/**
- * Creates the main reducer with the asynchronously loaded ones
- */
-export default function createReducer(asyncReducers) {
-  return combineReducers({
-    ...asyncReducers,
-    login,
-    avatar,
-  });
-}
+import trelloUserReducer, { initialState as trelloUserState } from './TrelloUser/reducer';
+
+// Combine all reducers you may have here
+export default combineReducers({
+  trelloUserState: trelloUserReducer,
+});
+
+export const initialStates = {
+  trelloUserState,
+};
