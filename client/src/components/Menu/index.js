@@ -1,2 +1,2 @@
 // @flow
-export { default } from './Menu.js';
+export { default } from './Menu.wrap.js';
