@@ -7,7 +7,7 @@ const styles = {
   menu: {
     padding: 15,
     fontFamily: 'Roboto',
-    minWidth: 200,
+    width: 300,
     MozBoxShadow: '2px 0 10px #cccccc',
     WebkitBoxShadow: '2px 0 10px #cccccc',
     boxShadow: '2px 0 10px #cccccc',
