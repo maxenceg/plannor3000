@@ -11,12 +11,15 @@ import { combineReducers } from 'redux';
  */
 
 import trelloUserReducer, { initialState as trelloUserState } from './TrelloUser/reducer';
+import appReducer, { initialState as appState } from './App/reducer';
 
 // Combine all reducers you may have here
 export default combineReducers({
   trelloUserState: trelloUserReducer,
+  appState: appReducer,
 });
 
 export const initialStates = {
   trelloUserState,
+  appState,
 };
