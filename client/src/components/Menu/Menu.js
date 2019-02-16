@@ -2,6 +2,7 @@
 import React from 'react';
 import BasicButton from '../BasicButton';
 import BasicSelect from '../BasicSelect';
+import ButtonsPanel from '../ButtonsPanel';
 import styles from './Menu.style';
 
 export default class Menu extends React.Component {
@@ -37,19 +38,26 @@ export default class Menu extends React.Component {
       this.props.addTrelloUserDailyGoalsColumn(event.target.value);
       this.props.fetchDailyGoalsCards(event.target.value);
     };
+    const refreshAction = () => {
+      this.props.fetchTrelloUserColumns(this.props.trelloUserSelectedBoard);
+      this.props.fetchDailyGoalsCards(this.props.trelloUserDailyGoalsColumn);
+    };
     return (
       <div style={this.props.style}>
         {!this.props.trelloUserFullName && (
           <BasicButton label="Se connecter avec Trello" onClickAction={connectToTrello} />
         )}
         {this.props.trelloUserBoards && this.props.trelloUserBoards.length > 0 && (
-          <BasicSelect
-            propStyle={styles.boardSelect}
-            value={this.props.trelloUserSelectedBoard}
-            handleChange={handleBoardChange}
-            label="Sélectionnez un board"
-            options={boardSelectOptions}
-          />
+          <div>
+            <ButtonsPanel style={styles.buttonsPanel} refreshAction={refreshAction} />
+            <BasicSelect
+              propStyle={styles.boardSelect}
+              value={this.props.trelloUserSelectedBoard}
+              handleChange={handleBoardChange}
+              label="Sélectionnez un board"
+              options={boardSelectOptions}
+            />
+          </div>
         )}
         {this.props.trelloUserSelectedBoard !== '' && (
           <BasicSelect
