@@ -1,18 +1,14 @@
 // @flow
 // $FlowFixMe flow is not ready for Suspense or lazy today
-import React, { Suspense, lazy } from 'react';
+import React, { Suspense } from 'react';
 import { Route, Switch } from 'react-router';
 
-const Home = lazy(() => import('./pages/Home'));
-const Login = lazy(() => import('./pages/Login'));
-const Avatar = lazy(() => import('./pages/Avatar'));
+import Home from './pages/Home';
 
 const routes = () => (
   <Suspense fallback={<div>Loading...</div>}>
     <Switch>
       <Route exact path="/" component={Home} />
-      <Route path="/login" component={Login} />
-      <Route path="/avatar" component={Avatar} />
     </Switch>
   </Suspense>
 );
