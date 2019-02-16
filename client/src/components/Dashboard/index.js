@@ -1,2 +1,2 @@
 // @flow
-export { default } from './Dashboard.js';
+export { default } from './Dashboard.wrap';

@@ -15,9 +15,10 @@ const styles = {
     boxShadow: '2px 0 10px #cccccc',
   },
   prodPlan: {
-    flexGrow: 100,
     display: 'flex',
+    flexGrow: 100,
     flexDirection: 'column',
+    position: 'relative',
   },
 };
 

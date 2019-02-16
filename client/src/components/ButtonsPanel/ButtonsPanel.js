@@ -14,6 +14,7 @@ export default class ButtonsPanel extends React.Component {
         <BasicButton
           style={{ ...styles.panelButton, ...styles.editTeamButton }}
           label={<i className="material-icons">people</i>}
+          onClickAction={this.props.editTeamAction}
         />
         <BasicButton
           style={{ ...styles.panelButton, ...styles.refreshButton }}

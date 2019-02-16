@@ -42,6 +42,9 @@ export default class Menu extends React.Component {
       this.props.fetchTrelloUserColumns(this.props.trelloUserSelectedBoard);
       this.props.fetchDailyGoalsCards(this.props.trelloUserDailyGoalsColumn);
     };
+    const editTeamAction = () => {
+      this.props.toggleEditTeamPopin();
+    };
     return (
       <div style={this.props.style}>
         {!this.props.trelloUserFullName && (
@@ -53,7 +56,11 @@ export default class Menu extends React.Component {
         )}
         {this.props.trelloUserBoards && this.props.trelloUserBoards.length > 0 && (
           <div>
-            <ButtonsPanel style={styles.buttonsPanel} refreshAction={refreshAction} />
+            <ButtonsPanel
+              style={styles.buttonsPanel}
+              refreshAction={refreshAction}
+              editTeamAction={editTeamAction}
+            />
             <BasicSelect
               propStyle={styles.boardSelect}
               value={this.props.trelloUserSelectedBoard}
