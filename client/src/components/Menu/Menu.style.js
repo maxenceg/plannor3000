@@ -6,6 +6,9 @@ const styles = {
     display: 'flex',
     justifyContent: 'flex-end',
   },
+  connectToTrelloButton: {
+    display: 'inline-block',
+  },
 };
 
 export default styles;

@@ -45,7 +45,11 @@ export default class Menu extends React.Component {
     return (
       <div style={this.props.style}>
         {!this.props.trelloUserFullName && (
-          <BasicButton label="Se connecter avec Trello" onClickAction={connectToTrello} />
+          <BasicButton
+            style={styles.connectToTrelloButton}
+            label="Se connecter avec Trello"
+            onClickAction={connectToTrello}
+          />
         )}
         {this.props.trelloUserBoards && this.props.trelloUserBoards.length > 0 && (
           <div>
