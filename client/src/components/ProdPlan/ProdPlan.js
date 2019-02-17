@@ -37,9 +37,9 @@ export default class ProdPlan extends React.Component {
       <div style={{ ...this.props.style, ...styles.container }}>
         <div style={styles.headerContainer}>
           <div style={styles.columnHeadersContainer}>
-            <ColumnHeader style={styles.columnHeader} />
-            <ColumnHeader style={styles.columnHeader} />
-            <ColumnHeader style={styles.columnHeader} />
+            {this.props.devTeamMembers.map(member => (
+              <ColumnHeader key={member.id} style={styles.columnHeader} />
+            ))}
           </div>
         </div>
         <div style={styles.planContainer}>

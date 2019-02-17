@@ -1,2 +1,2 @@
 // @flow
-export { default } from './ProdPlan.js';
+export { default } from './ProdPlan.wrap';
