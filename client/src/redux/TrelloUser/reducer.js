@@ -96,6 +96,19 @@ export default function reducer(state = initialState, action) {
           boardMembers: action.payload.members,
         },
       };
+    case constants.TOGGLE_TRELLO_TEAM_MEMBERSHIP:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          boardMembers: state.user.boardMembers.map(member => {
+            if (member.id === action.payload.memberId) {
+              return { ...member, isInTeam: !member.isInTeam };
+            }
+            return member;
+          }),
+        },
+      };
     default:
       return state;
   }

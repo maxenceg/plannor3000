@@ -26,6 +26,7 @@ export const constants = {
   },
   ADD_TRELLO_USER_SELECTED_BOARD: 'ADD_TRELLO_USER_SELECTED_BOARD',
   ADD_TRELLO_USER_DAILY_GOALS_COLUMN: 'ADD_TRELLO_USER_DAILY_GOALS_COLUMN',
+  TOGGLE_TRELLO_TEAM_MEMBERSHIP: 'TOGGLE_TRELLO_TEAM_MEMBERSHIP',
 };
 
 export function fetchTrelloUserRequest() {
@@ -201,6 +202,13 @@ export const fetchTrelloUserBoardMembers = board => {
     );
   };
 };
+
+export function toggleTrelloUserTeamMembership(memberId) {
+  return {
+    type: constants.TOGGLE_TRELLO_TEAM_MEMBERSHIP,
+    payload: { memberId },
+  };
+}
 
 export default {
   fetchTrelloUserRequest,

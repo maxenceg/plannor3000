@@ -1,16 +1,22 @@
 const styles = {
   editTeamPopin: {
-    maxWidth: 560,
+    maxWidth: 600,
   },
   avatarContainer: {
     verticalAlign: 'top',
     display: 'inline-flex',
     justifyContent: 'center',
     alignItems: 'center',
-    padding: 3,
+    margin: 5,
     minWidth: 50,
     minHeight: 50,
     cursor: 'pointer',
+    borderRadius: '50%',
+    boxSizing: 'border-box',
+  },
+  avatarInTeam: {
+    border: '4px solid orange',
+    margin: 1,
   },
   avatar: {
     borderRadius: '50%',

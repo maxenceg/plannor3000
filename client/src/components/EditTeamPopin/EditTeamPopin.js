@@ -6,19 +6,28 @@ import BasicButton from '../BasicButton';
 
 export default class EditTeamPopin extends React.Component {
   componentDidMount() {
-    console.log('will mount');
     if (this.props.trelloUserBoardMembers.length === 0) {
-      console.log('empty');
       this.props.fetchTrelloUserBoardMembers(this.props.trelloUserSelectedBoard);
     }
   }
   render() {
     const members = this.props.trelloUserBoardMembers;
+    const toggleMembership = (memberId, event) =>
+      this.props.toggleTrelloUserTeamMembership(memberId);
     const content = (
       <div>
         <div>
           {members.map(member => (
-            <div key={member.id} style={styles.avatarContainer} title={member.fullName}>
+            <div
+              onClick={toggleMembership.bind(this, member.id)}
+              key={member.id}
+              style={
+                member.isInTeam
+                  ? { ...styles.avatarContainer, ...styles.avatarInTeam }
+                  : styles.avatarContainer
+              }
+              title={member.fullName}
+            >
               {member.avatarHash ? (
                 <img
                   style={styles.avatar}
