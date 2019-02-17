@@ -7,5 +7,7 @@ export const getTrelloUserDailyGoalsColumn = state =>
 export const getTrelloUserDailyGoalsCards = state =>
   state.trelloUserState.user.dailyGoalsColumn.cards;
 export const getTrelloUserBoardMembers = state => state.trelloUserState.user.boardMembers;
+export const getTrelloUserBoardMembersOrigin = state =>
+  state.trelloUserState.user.boardMembersOrigin;
 export const getTrelloUserDevTeam = state =>
   state.trelloUserState.user.boardMembers.filter(member => member.isInTeam);

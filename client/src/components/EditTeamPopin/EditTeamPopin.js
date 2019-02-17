@@ -6,7 +6,10 @@ import BasicButton from '../BasicButton';
 
 export default class EditTeamPopin extends React.Component {
   componentDidMount() {
-    if (this.props.trelloUserBoardMembers.length === 0) {
+    if (
+      this.props.trelloUserBoardMembers.length === 0 ||
+      this.props.trelloUserBoardMembersOrigin !== this.props.trelloUserSelectedBoard
+    ) {
       this.props.fetchTrelloUserBoardMembers(this.props.trelloUserSelectedBoard);
     }
   }

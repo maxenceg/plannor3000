@@ -94,6 +94,7 @@ export default function reducer(state = initialState, action) {
         user: {
           ...state.user,
           boardMembers: action.payload.members,
+          boardMembersOrigin: action.payload.boardOrigin,
         },
       };
     case constants.TOGGLE_TRELLO_TEAM_MEMBERSHIP:

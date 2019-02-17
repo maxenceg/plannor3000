@@ -177,10 +177,10 @@ export function fetchTrelloUserBoardMembersRequest() {
   };
 }
 
-export function fetchTrelloUserBoardMembersSuccess(members) {
+export function fetchTrelloUserBoardMembersSuccess(boardOrigin, members) {
   return {
     type: constants.FETCH_TRELLO_USER_BOARD_MEMBERS.SUCCESS,
-    payload: { members },
+    payload: { boardOrigin, members },
   };
 }
 
@@ -197,7 +197,7 @@ export const fetchTrelloUserBoardMembers = board => {
     window.Trello.get(
       `boards/` + board + `/members`,
       { fields: 'avatarHash,fullName,initials' },
-      data => dispatch(fetchTrelloUserBoardMembersSuccess(data)),
+      data => dispatch(fetchTrelloUserBoardMembersSuccess(board, data)),
       error => dispatch(fetchTrelloUserBoardMembersError(error)),
     );
   };
