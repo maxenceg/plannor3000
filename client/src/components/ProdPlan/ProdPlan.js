@@ -52,9 +52,15 @@ export default class ProdPlan extends React.Component {
             />
           ))}
           <div style={styles.columnsContainer}>
-            <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} cards={cards1} />
-            <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} cards={cards2} />
-            <PlanColumn dayStartTime={dayStartTime} dayEndTime={dayEndTime} cards={cards3} />
+            {this.props.devTeamMembers.map(member => (
+              <PlanColumn
+                key={member.id}
+                dayStartTime={dayStartTime}
+                dayEndTime={dayEndTime}
+                member={member}
+                cards={cards1}
+              />
+            ))}
           </div>
         </div>
       </div>
