@@ -11,11 +11,13 @@ export default class ButtonsPanel extends React.Component {
           style={{ ...styles.panelButton, ...styles.settingsButton }}
           label={<i className="material-icons">settings</i>}
         />
-        <BasicButton
-          style={{ ...styles.panelButton, ...styles.editTeamButton }}
-          label={<i className="material-icons">people</i>}
-          onClickAction={this.props.editTeamAction}
-        />
+        {!!this.props.isTeamEditable && (
+          <BasicButton
+            style={{ ...styles.panelButton, ...styles.editTeamButton }}
+            label={<i className="material-icons">people</i>}
+            onClickAction={this.props.editTeamAction}
+          />
+        )}
         <BasicButton
           style={{ ...styles.panelButton, ...styles.refreshButton }}
           label={<i className="material-icons">refresh</i>}

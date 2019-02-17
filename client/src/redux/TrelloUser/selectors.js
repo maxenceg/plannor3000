@@ -6,3 +6,4 @@ export const getTrelloUserDailyGoalsColumn = state =>
   state.trelloUserState.user.dailyGoalsColumn.id;
 export const getTrelloUserDailyGoalsCards = state =>
   state.trelloUserState.user.dailyGoalsColumn.cards;
+export const getTrelloUserBoardMembers = state => state.trelloUserState.user.boardMembers;

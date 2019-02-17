@@ -11,6 +11,7 @@ export const initialState = {
       id: '',
       cards: {},
     },
+    boardMembers: [],
   },
   error: null,
   isLoading: false,
@@ -85,6 +86,14 @@ export default function reducer(state = initialState, action) {
             ...state.user.dailyGoalsColumn,
             cards: action.payload.cards,
           },
+        },
+      };
+    case constants.FETCH_TRELLO_USER_BOARD_MEMBERS.SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          boardMembers: action.payload.members,
         },
       };
     default:

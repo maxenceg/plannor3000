@@ -2,8 +2,10 @@
 import React from 'react';
 import styles from './PlannorPopin.style';
 
-export default class PlanCard extends React.Component {
+export default class PlannorPopin extends React.Component {
   render() {
-    return <div style={styles.popInContainer}>Hello world</div>;
+    return (
+      <div style={{ ...this.props.style, ...styles.popInContainer }}>{this.props.content}</div>
+    );
   }
 }

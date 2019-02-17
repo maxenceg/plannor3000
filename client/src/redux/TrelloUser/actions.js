@@ -19,6 +19,11 @@ export const constants = {
     SUCCESS: 'FETCH_TRELLO_USER_DAILY_GOALS_CARDS_SUCCESS',
     ERROR: 'FETCH_TRELLO_USER_DAILY_GOALS_CARDS_ERROR',
   },
+  FETCH_TRELLO_USER_BOARD_MEMBERS: {
+    REQUEST: 'FETCH_TRELLO_USER_BOARD_MEMBERS_REQUEST',
+    SUCCESS: 'FETCH_TRELLO_USER_BOARD_MEMBERS_SUCCESS',
+    ERROR: 'FETCH_TRELLO_USER_BOARD_MEMBERS_ERROR',
+  },
   ADD_TRELLO_USER_SELECTED_BOARD: 'ADD_TRELLO_USER_SELECTED_BOARD',
   ADD_TRELLO_USER_DAILY_GOALS_COLUMN: 'ADD_TRELLO_USER_DAILY_GOALS_COLUMN',
 };
@@ -161,6 +166,38 @@ export const fetchDailyGoalsCards = column => {
       { fields: 'idShort,name' },
       data => dispatch(fetchTrelloUserDailyGoalsCardsSuccess(data)),
       error => dispatch(fetchTrelloUserDailyGoalsCardsError(error)),
+    );
+  };
+};
+
+export function fetchTrelloUserBoardMembersRequest() {
+  return {
+    type: constants.FETCH_TRELLO_USER_BOARD_MEMBERS.REQUEST,
+  };
+}
+
+export function fetchTrelloUserBoardMembersSuccess(members) {
+  return {
+    type: constants.FETCH_TRELLO_USER_BOARD_MEMBERS.SUCCESS,
+    payload: { members },
+  };
+}
+
+export function fetchTrelloUserBoardMembersError(error) {
+  return {
+    type: constants.FETCH_TRELLO_USER_BOARD_MEMBERS.ERROR,
+    payload: { errorMessage: error.message },
+  };
+}
+
+export const fetchTrelloUserBoardMembers = board => {
+  return dispatch => {
+    dispatch(fetchTrelloUserBoardMembersRequest());
+    window.Trello.get(
+      `boards/` + board + `/members`,
+      { fields: 'avatarHash,fullName,initials' },
+      data => dispatch(fetchTrelloUserBoardMembersSuccess(data)),
+      error => dispatch(fetchTrelloUserBoardMembersError(error)),
     );
   };
 };

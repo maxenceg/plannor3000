@@ -59,6 +59,7 @@ export default class Menu extends React.Component {
             <ButtonsPanel
               style={styles.buttonsPanel}
               refreshAction={refreshAction}
+              isTeamEditable={this.props.trelloUserSelectedBoard.length}
               editTeamAction={editTeamAction}
             />
             <BasicSelect
