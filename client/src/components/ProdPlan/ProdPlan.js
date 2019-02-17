@@ -38,7 +38,7 @@ export default class ProdPlan extends React.Component {
         <div style={styles.headerContainer}>
           <div style={styles.columnHeadersContainer}>
             {this.props.devTeamMembers.map(member => (
-              <ColumnHeader key={member.id} style={styles.columnHeader} />
+              <ColumnHeader key={member.id} style={styles.columnHeader} member={member} />
             ))}
           </div>
         </div>

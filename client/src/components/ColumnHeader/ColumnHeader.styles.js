@@ -14,14 +14,26 @@ const styles = {
   },
   picture: {
     margin: 7,
-    width: 40,
-    height: 40,
-    borderRadius: 40,
+    width: 50,
+    height: 50,
+    borderRadius: '50%',
+    overflow: 'hidden',
   },
   devName: {
     textAlign: 'center',
     margin: '0 7px 7px 7px',
     fontSize: 20,
+  },
+  undefinedAvatar: {
+    width: 50,
+    height: 50,
+    color: '#111111',
+    display: 'inline-flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderRadius: 50,
+    background: '#dddddd',
+    textTransform: 'uppercase',
   },
 };
 
