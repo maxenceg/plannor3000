@@ -18,7 +18,6 @@ const styles = {
     flex: '1 1 auto',
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
   },
   gridItem: {
     display: 'inline-grid',

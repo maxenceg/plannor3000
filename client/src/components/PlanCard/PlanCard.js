@@ -6,16 +6,22 @@ import styles from './PlanCard.style';
 export default class PlanCard extends React.Component {
   render() {
     const topProp =
-      (100 * (timeInMinutes(this.props.startTime) - timeInMinutes(this.props.dayStartTime))) /
-        durationInMinutes(this.props.dayStartTime, this.props.dayEndTime) +
-      '%';
+      this.props.startTime && this.props.dayStartTime && this.props.dayEndTime
+        ? (100 * (timeInMinutes(this.props.startTime) - timeInMinutes(this.props.dayStartTime))) /
+            durationInMinutes(this.props.dayStartTime, this.props.dayEndTime) +
+          '%'
+        : null;
     const heightProp =
-      (100 * (timeInMinutes(this.props.endTime) - timeInMinutes(this.props.startTime))) /
-        durationInMinutes(this.props.dayStartTime, this.props.dayEndTime) +
-      '%';
+      this.props.startTime && this.props.endTime && this.props.dayStartTime && this.props.dayEndTime
+        ? (100 * (timeInMinutes(this.props.endTime) - timeInMinutes(this.props.startTime))) /
+            durationInMinutes(this.props.dayStartTime, this.props.dayEndTime) +
+          '%'
+        : null;
+    const timedCardContainerStyle =
+      topProp && heightProp ? { top: topProp, height: heightProp, position: 'absolute' } : null;
     return (
-      <div style={{ ...styles.cardContainer, top: topProp, height: heightProp }}>
-        {this.props.duration}
+      <div style={{ ...styles.cardContainer, ...timedCardContainerStyle }}>
+        {this.props.content}
       </div>
     );
   }

@@ -15,6 +15,7 @@ export default class PlanColumn extends React.Component {
               dayEndTime={this.props.dayEndTime}
               startTime={card.startTime}
               endTime={card.endTime}
+              content={card.name}
             />
           ))}
         </div>
