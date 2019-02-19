@@ -11,3 +11,7 @@ export const getTrelloUserBoardMembersOrigin = state =>
   state.trelloUserState.user.boardMembersOrigin;
 export const getTrelloUserDevTeam = state =>
   state.trelloUserState.user.boardMembers.filter(member => member.isInTeam);
+export const getTrelloUserDGCardsRelatedToMember = (state, memberId) =>
+  state.trelloUserState.user.dailyGoalsColumn.cards.filter(card =>
+    card.idMembers.includes(memberId),
+  );

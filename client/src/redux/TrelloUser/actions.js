@@ -164,7 +164,7 @@ export const fetchDailyGoalsCards = column => {
     dispatch(fetchTrelloUserDailyGoalsCardsRequest());
     window.Trello.get(
       `lists/` + column + `/cards`,
-      { fields: 'idShort,name' },
+      { fields: 'idShort,name,idMembers' },
       data => dispatch(fetchTrelloUserDailyGoalsCardsSuccess(data)),
       error => dispatch(fetchTrelloUserDailyGoalsCardsError(error)),
     );
