@@ -9,7 +9,7 @@ export const initialState = {
     columns: [],
     dailyGoalsColumn: {
       id: '',
-      cards: {},
+      cards: [],
     },
     boardMembers: [],
   },

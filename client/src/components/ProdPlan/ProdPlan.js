@@ -52,15 +52,26 @@ export default class ProdPlan extends React.Component {
             />
           ))}
           <div style={styles.columnsContainer}>
-            {this.props.devTeamMembers.map(member => (
-              <PlanColumn
-                key={member.id}
-                dayStartTime={dayStartTime}
-                dayEndTime={dayEndTime}
-                member={member}
-                cards={cards1}
-              />
-            ))}
+            {this.props.devTeamMembers.map(member => {
+              if (!this.props.dailyGoalsColumn) {
+                return (
+                  <div style={styles.errorDiv}>
+                    <span style={styles.errorLabel}>
+                      Vous n'avez pas sélectionné de colonne 'Daily Goals'
+                    </span>
+                  </div>
+                );
+              }
+              return (
+                <PlanColumn
+                  key={member.id}
+                  dayStartTime={dayStartTime}
+                  dayEndTime={dayEndTime}
+                  member={member}
+                  cards={this.props.getDailyGoalsCardsRelatedToMember(member.id)}
+                />
+              );
+            })}
           </div>
         </div>
       </div>
