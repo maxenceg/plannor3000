@@ -11,6 +11,7 @@ const styles = {
     boxShadow: '2px 2px 10px #cccccc',
     borderRadius: 5,
     width: '20%',
+    minHeight: 200,
   },
   picture: {
     margin: 7,
