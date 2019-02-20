@@ -7,6 +7,7 @@ use Doctrine\ORM\Mapping as ORM;
 /**
  * A board.
  *
+ * @ORM\Table(name="plannor_boards")
  * @ORM\Entity
  */
 class Board
