@@ -6,6 +6,20 @@ import ButtonsPanel from '../ButtonsPanel';
 import styles from './Menu.style';
 
 export default class Menu extends React.Component {
+  componentWillMount() {
+    window.Trello.authorize({
+      type: 'popup',
+      name: 'Plannor 3000',
+      scope: {
+        read: 'true',
+        write: 'true',
+      },
+      expiration: 'never',
+    });
+    this.props.fetchTrelloUser();
+    this.props.fetchTrelloUserBoards();
+  }
+
   render() {
     const connectToTrello = () => {
       window.Trello.authorize({
