@@ -5,11 +5,12 @@ namespace App\Entity;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
- * A board.
+ * A project
  *
+ * @ORM\Table(name="plannor_projects")
  * @ORM\Entity
  */
-class Board
+class Project
 {
     /**
      * @ORM\Id()
