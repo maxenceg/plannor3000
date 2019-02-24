@@ -10,6 +10,10 @@ const styles = {
     boxSizing: 'border-box',
     color: 'white',
   },
+  footerIcon: {
+    display: 'flex',
+    flexDirection: 'row-reverse',
+  },
 };
 
 export default styles;

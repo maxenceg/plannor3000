@@ -16,6 +16,7 @@ export default class PlanColumn extends React.Component {
               startTime={card.startTime}
               endTime={card.endTime}
               content={card.name}
+              icon={{ name: 'delete' }}
             />
           ))}
         </div>

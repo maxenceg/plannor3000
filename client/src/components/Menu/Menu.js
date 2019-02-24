@@ -3,6 +3,7 @@ import React from 'react';
 import BasicButton from '../BasicButton';
 import BasicSelect from '../BasicSelect';
 import ButtonsPanel from '../ButtonsPanel';
+import PlanCard from '../PlanCard';
 import styles from './Menu.style';
 
 export default class Menu extends React.Component {
@@ -94,14 +95,17 @@ export default class Menu extends React.Component {
             options={dailyGoalsSelectOptions}
           />
         )}
-        {this.props.trelloUserDailyGoalsCards.length > 0 &&
-          this.props.trelloUserDailyGoalsCards.map(card => (
-            <span key={card.id}>
-              {card.shortId}
-              {card.name}
-              <br />
-            </span>
-          ))}
+        <div style={styles.cardsContainer}>
+          {this.props.trelloUserDailyGoalsCards.length > 0 &&
+            this.props.trelloUserDailyGoalsCards.map(card => (
+              <PlanCard
+                style={styles.planCard}
+                key={card.id}
+                content={card.name}
+                icon={{ name: 'arrow_right_alt' }}
+              />
+            ))}
+        </div>
       </div>
     );
   }

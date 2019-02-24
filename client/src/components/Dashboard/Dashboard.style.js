@@ -5,7 +5,8 @@ const styles = {
     height: '100vh',
   },
   menu: {
-    textAlign: 'center',
+    display: 'flex',
+    flexDirection: 'column',
     padding: 15,
     fontFamily: 'Roboto',
     width: 300,

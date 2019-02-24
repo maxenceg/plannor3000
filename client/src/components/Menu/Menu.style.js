@@ -9,6 +9,14 @@ const styles = {
   connectToTrelloButton: {
     display: 'inline-block',
   },
+  cardsContainer: {
+    marginTop: 7,
+    flexGrow: 100,
+    overflowY: 'scroll',
+  },
+  planCard: {
+    marginTop: 5,
+  },
 };
 
 export default styles;
