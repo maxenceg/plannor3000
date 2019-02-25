@@ -84,16 +84,16 @@ export default class Menu extends React.Component {
               label="Sélectionnez un board"
               options={boardSelectOptions}
             />
+            {this.props.trelloUserSelectedBoard !== '' && (
+              <BasicSelect
+                propStyle={styles.boardSelect}
+                value={this.props.trelloUserDailyGoalsColumn}
+                handleChange={handleDailyGoalsChange}
+                label="Sélectionnez la colonne Daily Goals"
+                options={dailyGoalsSelectOptions}
+              />
+            )}
           </div>
-        )}
-        {this.props.trelloUserSelectedBoard !== '' && (
-          <BasicSelect
-            propStyle={styles.boardSelect}
-            value={this.props.trelloUserDailyGoalsColumn}
-            handleChange={handleDailyGoalsChange}
-            label="Sélectionnez la colonne Daily Goals"
-            options={dailyGoalsSelectOptions}
-          />
         )}
         <div style={styles.cardsContainer}>
           {this.props.trelloUserDailyGoalsCards.length > 0 &&
