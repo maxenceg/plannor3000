@@ -13,6 +13,9 @@ export const initialState = {
     },
     boardMembers: [],
   },
+  project: {
+    devTeam: [],
+  },
   error: null,
   isLoading: false,
 };
@@ -98,8 +101,22 @@ export default function reducer(state = initialState, action) {
         },
       };
     case constants.TOGGLE_TRELLO_TEAM_MEMBERSHIP:
+      const memberIndex = state.project.devTeam
+        .map(function(member) {
+          return member.id;
+        })
+        .indexOf(action.payload.memberId);
       return {
         ...state,
+        project: {
+          ...state.project,
+          devTeam:
+            memberIndex !== -1
+              ? state.project.devTeam.filter(member => member.id !== action.payload.memberId)
+              : state.project.devTeam.concat(
+                  state.user.boardMembers.filter(member => member.id === action.payload.memberId),
+                ),
+        },
         user: {
           ...state.user,
           boardMembers: state.user.boardMembers.map(member => {
