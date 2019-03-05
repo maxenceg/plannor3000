@@ -215,6 +215,35 @@ export function toggleTrelloUserTeamMembership(memberId) {
   };
 }
 
+export function tagDevsOnCardRequest() {
+  return {
+    type: constants.TAG_DEVS_ON_CARD.REQUEST,
+  };
+}
+
+export function tagDevsOnCardSuccess() {
+  return {
+    type: constants.TAG_DEVS_ON_CARD.SUCCESS,
+  };
+}
+
+export function tagDevsOnCardError(error) {
+  return {
+    type: constants.TAG_DEVS_ON_CARD.ERROR,
+    payload: { errorMessage: error.message },
+  };
+}
+
+export function tagDevsOnCard(cardId, members) {
+  return dispatch => {
+    dispatch(tagDevsOnCardRequest());
+    console.log(members);
+    members.forEach(member =>
+      window.Trello.post(`cards/` + cardId + '/idMembers', { value: member.id }),
+    );
+  };
+}
+
 export default {
   fetchTrelloUserRequest,
   fetchTrelloUserSuccess,

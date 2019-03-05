@@ -10,6 +10,7 @@ import {
 import {
   fetchTrelloUserBoardMembers,
   toggleTrelloUserTeamMembership,
+  tagDevsOnCard,
 } from 'redux/TrelloUser/actions';
 import { toggleEditTeamPopin } from 'redux/App/actions';
 import { getDevSelectionCardId } from 'redux/App';
@@ -26,6 +27,7 @@ const mapDispatchToProps = {
   fetchTrelloUserBoardMembers,
   toggleEditTeamPopin,
   toggleTrelloUserTeamMembership,
+  tagDevsOnCard,
 };
 
 export default connect(

@@ -36,6 +36,7 @@ export default class DevSelectionPopin extends React.Component {
     const content = (
       <div>
         <div>
+          Carte #{this.props.selectedCard}
           {members.map(member => (
             <div
               onClick={toggleMembership.bind(this, member.id)}
