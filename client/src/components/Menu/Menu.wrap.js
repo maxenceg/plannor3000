@@ -17,7 +17,11 @@ import {
   getTrelloUserDailyGoalsColumn,
   getTrelloUserDailyGoalsCards,
 } from 'redux/TrelloUser';
-import { toggleEditTeamPopin } from 'redux/App/actions';
+import {
+  toggleEditTeamPopin,
+  toggleDevSelectionPopin,
+  addDevSelectionCardId,
+} from 'redux/App/actions';
 
 const mapStateToProps = state => ({
   trelloUserFullName: getTrelloUserFullName(state),
@@ -36,6 +40,8 @@ const mapDispatchToProps = {
   addTrelloUserSelectedBoard,
   addTrelloUserDailyGoalsColumn,
   toggleEditTeamPopin,
+  toggleDevSelectionPopin,
+  addDevSelectionCardId,
 };
 
 export default connect(

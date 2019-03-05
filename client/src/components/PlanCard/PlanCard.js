@@ -23,7 +23,7 @@ export default class PlanCard extends React.Component {
       <div style={{ ...this.props.style, ...styles.cardContainer, ...timedCardContainerStyle }}>
         {this.props.content}
         <div style={styles.footerIcon}>
-          <i className="material-icons" onClick={this.props.icon.action}>
+          <i style={styles.icon} className="material-icons" onClick={this.props.icon.action}>
             {this.props.icon.name}
           </i>
         </div>

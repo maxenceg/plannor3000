@@ -14,6 +14,9 @@ const styles = {
     display: 'flex',
     flexDirection: 'row-reverse',
   },
+  icon: {
+    cursor: 'pointer',
+  },
 };
 
 export default styles;

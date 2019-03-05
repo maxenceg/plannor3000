@@ -12,8 +12,10 @@ import {
   toggleTrelloUserTeamMembership,
 } from 'redux/TrelloUser/actions';
 import { toggleEditTeamPopin } from 'redux/App/actions';
+import { getDevSelectionCardId } from 'redux/App';
 
 const mapStateToProps = state => ({
+  selectedCard: getDevSelectionCardId(state),
   devTeamMembers: getTrelloUserDevTeam(state),
   trelloUserSelectedBoard: getTrelloUserSelectedBoard(state),
   trelloUserBoardMembers: getTrelloUserBoardMembers(state),

@@ -1,10 +1,11 @@
 import Dashboard from './Dashboard';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
-import { isEditTeamPopinOpen } from 'redux/App';
+import { isEditTeamPopinOpen, isDevSelectionPopinOpen } from 'redux/App';
 
 const mapStateToProps = state => ({
   isEditTeamPopinOpen: isEditTeamPopinOpen(state),
+  isDevSelectionPopinOpen: isDevSelectionPopinOpen(state),
 });
 
 const mapDispatchToProps = {};

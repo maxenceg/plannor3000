@@ -60,6 +60,10 @@ export default class Menu extends React.Component {
     const editTeamAction = () => {
       this.props.toggleEditTeamPopin();
     };
+    const openDevSelectionPopin = cardId => {
+      this.props.toggleDevSelectionPopin();
+      this.props.addDevSelectionCardId(cardId);
+    };
     return (
       <div style={this.props.style}>
         {!this.props.trelloUserFullName && (
@@ -102,7 +106,10 @@ export default class Menu extends React.Component {
                 style={styles.planCard}
                 key={card.id}
                 content={card.name}
-                icon={{ name: 'arrow_right_alt' }}
+                icon={{
+                  name: 'arrow_right_alt',
+                  action: () => openDevSelectionPopin(card.id),
+                }}
               />
             ))}
         </div>
