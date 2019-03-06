@@ -113,8 +113,8 @@ export default class Menu extends React.Component {
           </div>
         )}
         <div style={styles.cardsContainer}>
-          {this.props.trelloUserDailyGoalsCards.length > 0 &&
-            this.props.trelloUserDailyGoalsCards.map(card => (
+          {this.props.trelloUserSprintBacklogCards.length > 0 &&
+            this.props.trelloUserSprintBacklogCards.map(card => (
               <PlanCard
                 style={styles.planCard}
                 key={card.id}
