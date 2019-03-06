@@ -53,6 +53,10 @@ export default class Menu extends React.Component {
       this.props.addTrelloUserDailyGoalsColumn(event.target.value);
       this.props.fetchDailyGoalsCards(event.target.value);
     };
+    const handleSprintColumnChange = event => {
+      this.props.addTrelloUserSprintColumn(event.target.value);
+      this.props.fetchSprintBacklogCards(event.target.value);
+    };
     const refreshAction = () => {
       this.props.fetchTrelloUserColumns(this.props.trelloUserSelectedBoard);
       this.props.fetchDailyGoalsCards(this.props.trelloUserDailyGoalsColumn);
@@ -89,13 +93,22 @@ export default class Menu extends React.Component {
               options={boardSelectOptions}
             />
             {this.props.trelloUserSelectedBoard !== '' && (
-              <BasicSelect
-                propStyle={styles.boardSelect}
-                value={this.props.trelloUserDailyGoalsColumn}
-                handleChange={handleDailyGoalsChange}
-                label="Sélectionnez la colonne Daily Goals"
-                options={dailyGoalsSelectOptions}
-              />
+              <div>
+                <BasicSelect
+                  propStyle={styles.boardSelect}
+                  value={this.props.trelloUserSprintColumn}
+                  handleChange={handleSprintColumnChange}
+                  label="Sélectionnez la colonne Sprint Backlog"
+                  options={dailyGoalsSelectOptions}
+                />
+                <BasicSelect
+                  propStyle={styles.boardSelect}
+                  value={this.props.trelloUserDailyGoalsColumn}
+                  handleChange={handleDailyGoalsChange}
+                  label="Sélectionnez la colonne Daily Goals"
+                  options={dailyGoalsSelectOptions}
+                />
+              </div>
             )}
           </div>
         )}

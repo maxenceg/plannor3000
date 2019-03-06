@@ -11,6 +11,10 @@ export const initialState = {
       id: '',
       cards: [],
     },
+    sprintColumn: {
+      id: '',
+      cards: [],
+    },
     boardMembers: [],
   },
   project: {
@@ -80,6 +84,14 @@ export default function reducer(state = initialState, action) {
           dailyGoalsColumn: { ...state.user.dailyGoalsColumn, id: action.payload.column },
         },
       };
+    case constants.ADD_TRELLO_USER_SPRINT_COLUMN:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          sprintColumn: { ...state.user.sprintColumn, id: action.payload.column },
+        },
+      };
     case constants.FETCH_TRELLO_USER_DAILY_GOALS_CARDS.SUCCESS:
       return {
         ...state,
@@ -87,6 +99,17 @@ export default function reducer(state = initialState, action) {
           ...state.user,
           dailyGoalsColumn: {
             ...state.user.dailyGoalsColumn,
+            cards: action.payload.cards,
+          },
+        },
+      };
+    case constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          sprintColumn: {
+            ...state.user.sprintColumn,
             cards: action.payload.cards,
           },
         },

@@ -19,6 +19,11 @@ export const constants = {
     SUCCESS: 'FETCH_TRELLO_USER_DAILY_GOALS_CARDS_SUCCESS',
     ERROR: 'FETCH_TRELLO_USER_DAILY_GOALS_CARDS_ERROR',
   },
+  FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS: {
+    REQUEST: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_REQUEST',
+    SUCCESS: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_SUCCESS',
+    ERROR: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_ERROR',
+  },
   FETCH_TRELLO_USER_BOARD_MEMBERS: {
     REQUEST: 'FETCH_TRELLO_USER_BOARD_MEMBERS_REQUEST',
     SUCCESS: 'FETCH_TRELLO_USER_BOARD_MEMBERS_SUCCESS',
@@ -31,6 +36,7 @@ export const constants = {
   },
   ADD_TRELLO_USER_SELECTED_BOARD: 'ADD_TRELLO_USER_SELECTED_BOARD',
   ADD_TRELLO_USER_DAILY_GOALS_COLUMN: 'ADD_TRELLO_USER_DAILY_GOALS_COLUMN',
+  ADD_TRELLO_USER_SPRINT_COLUMN: 'ADD_TRELLO_USER_SPRINT_COLUMN',
   TOGGLE_TRELLO_TEAM_MEMBERSHIP: 'TOGGLE_TRELLO_TEAM_MEMBERSHIP',
 };
 
@@ -108,6 +114,13 @@ export function addTrelloUserDailyGoalsColumn(column) {
   };
 }
 
+export function addTrelloUserSprintColumn(column) {
+  return {
+    type: constants.ADD_TRELLO_USER_SPRINT_COLUMN,
+    payload: { column },
+  };
+}
+
 export function fetchTrelloUserDailyGoalsCardsRequest() {
   return {
     type: constants.FETCH_TRELLO_USER_DAILY_GOALS_CARDS.REQUEST,
@@ -124,6 +137,26 @@ export function fetchTrelloUserDailyGoalsCardsSuccess(cards) {
 export function fetchTrelloUserDailyGoalsCardsError(error) {
   return {
     type: constants.FETCH_TRELLO_USER_DAILY_GOALS_CARDS.ERROR,
+    payload: { errorMessage: error.message },
+  };
+}
+
+export function fetchTrelloUserSprintBacklogCardsRequest() {
+  return {
+    type: constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.REQUEST,
+  };
+}
+
+export function fetchTrelloUserSprintBacklogCardsSuccess(cards) {
+  return {
+    type: constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.SUCCESS,
+    payload: { cards },
+  };
+}
+
+export function fetchTrelloUserSprintBacklogCardsError(error) {
+  return {
+    type: constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.ERROR,
     payload: { errorMessage: error.message },
   };
 }
@@ -172,6 +205,18 @@ export const fetchDailyGoalsCards = column => {
       { fields: 'idShort,name,idMembers' },
       data => dispatch(fetchTrelloUserDailyGoalsCardsSuccess(data)),
       error => dispatch(fetchTrelloUserDailyGoalsCardsError(error)),
+    );
+  };
+};
+
+export const fetchSprintBacklogCards = column => {
+  return dispatch => {
+    dispatch(fetchTrelloUserSprintBacklogCardsRequest());
+    window.Trello.get(
+      `lists/` + column + `/cards`,
+      { fields: 'idShort,name,idMembers' },
+      data => dispatch(fetchTrelloUserSprintBacklogCardsSuccess(data)),
+      error => dispatch(fetchTrelloUserSprintBacklogCardsError(error)),
     );
   };
 };
