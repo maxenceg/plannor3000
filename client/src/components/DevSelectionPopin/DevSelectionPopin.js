@@ -19,7 +19,9 @@ export default class DevSelectionPopin extends React.Component {
     const validateAction = () => {
       this.props.toggleDevSelectionPopin();
       this.props.tagDevsOnCard(this.props.selectedCard, this.props.selectedMembers);
-      this.props.moveCardToDailyGoals(this.props.selectedCard, this.props.dailyGoalsColumn);
+      if (this.props.selectedMembers.length > 0) {
+        this.props.moveCardToDailyGoals(this.props.selectedCard, this.props.dailyGoalsColumn);
+      }
     };
     const content = (
       <div>
