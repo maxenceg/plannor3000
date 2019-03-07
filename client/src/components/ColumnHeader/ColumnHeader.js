@@ -1,6 +1,6 @@
 // @flow
 import React from 'react';
-import styles from './ColumnHeader.styles';
+import styles from './ColumnHeader.style';
 
 export default class ColumnHeader extends React.Component {
   render() {
