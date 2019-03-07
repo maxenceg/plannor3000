@@ -136,9 +136,12 @@ export default function reducer(state = initialState, action) {
           devTeam:
             memberIndex !== -1
               ? state.project.devTeam.filter(member => member.id !== action.payload.memberId)
-              : state.project.devTeam.concat(
-                  state.user.boardMembers.filter(member => member.id === action.payload.memberId),
-                ),
+              : state.project.devTeam.concat({
+                  ...state.user.boardMembers.filter(
+                    member => member.id === action.payload.memberId,
+                  )[0],
+                  dailyCards: [],
+                }),
         },
         user: {
           ...state.user,
