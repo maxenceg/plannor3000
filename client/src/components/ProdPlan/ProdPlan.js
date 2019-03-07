@@ -55,7 +55,7 @@ export default class ProdPlan extends React.Component {
             {this.props.devTeamMembers.map(member => {
               if (!this.props.dailyGoalsColumn) {
                 return (
-                  <div style={styles.errorDiv}>
+                  <div key={member.id} style={styles.errorDiv}>
                     <span style={styles.errorLabel}>
                       Vous n'avez pas sélectionné de colonne 'Daily Goals'
                     </span>
