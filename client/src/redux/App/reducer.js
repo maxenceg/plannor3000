@@ -5,6 +5,7 @@ export const initialState = {
   devSelectionPopin: {
     isOpen: false,
     selectedCardId: null,
+    selectedMembers: [],
   },
 };
 
@@ -20,7 +21,7 @@ export default function reducer(state = initialState, action) {
         ...state,
         devSelectionPopin: {
           ...state.devSelectionPopin,
-          isOpen: !state.isOpen,
+          isOpen: !state.devSelectionPopin.isOpen,
         },
       };
     case constants.ADD_DEV_SELECTION_CARD_ID:
@@ -29,6 +30,18 @@ export default function reducer(state = initialState, action) {
         devSelectionPopin: {
           ...state.devSelectionPopin,
           selectedCardId: action.payload.cardId,
+        },
+      };
+    case constants.TOGGLE_MEMBER_SELECTION:
+      return {
+        ...state,
+        devSelectionPopin: {
+          ...state.devSelectionPopin,
+          selectedMembers: state.devSelectionPopin.selectedMembers.includes(action.payload.memberId)
+            ? state.devSelectionPopin.selectedMembers.filter(
+                memberId => memberId !== action.payload.memberId,
+              )
+            : [...state.devSelectionPopin.selectedMembers, action.payload.memberId],
         },
       };
     default:

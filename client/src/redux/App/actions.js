@@ -2,6 +2,7 @@ export const constants = {
   TOGGLE_EDIT_TEAM_POPIN: 'TOGGLE_EDIT_TEAM_POPIN',
   TOGGLE_DEV_SELECTION_POPIN: 'TOGGLE_DEV_SELECTION_POPIN',
   ADD_DEV_SELECTION_CARD_ID: 'ADD_DEV_SELECTION_CARD_ID',
+  TOGGLE_MEMBER_SELECTION: 'TOGGLE_MEMBER_SELECTION',
 };
 
 export function toggleEditTeamPopin() {
@@ -20,6 +21,13 @@ export function addDevSelectionCardId(cardId) {
   return {
     type: constants.ADD_DEV_SELECTION_CARD_ID,
     payload: { cardId },
+  };
+}
+
+export function toggleMemberSelection(memberId) {
+  return {
+    type: constants.TOGGLE_MEMBER_SELECTION,
+    payload: { memberId },
   };
 }
 
