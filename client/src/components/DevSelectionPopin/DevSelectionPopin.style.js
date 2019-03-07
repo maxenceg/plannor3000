@@ -36,6 +36,7 @@ const styles = {
     textAlign: 'right',
   },
   warningMessage: {
+    color: '#d88c00',
     marginBottom: 10,
   },
 };

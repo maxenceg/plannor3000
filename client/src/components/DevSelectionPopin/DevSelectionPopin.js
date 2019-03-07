@@ -26,31 +26,37 @@ export default class DevSelectionPopin extends React.Component {
     const content = (
       <div>
         <div>
-          {members.map(member => (
-            <div
-              onClick={this.props.toggleMemberSelection.bind(this, member.id)}
-              key={member.id}
-              style={
-                this.props.selectedMembers.includes(member.id)
-                  ? { ...styles.avatarContainer, ...styles.avatarInTeam }
-                  : styles.avatarContainer
-              }
-              title={member.fullName}
-            >
-              {member.avatarHash ? (
-                <img
-                  style={styles.avatar}
-                  alt={member.fullName}
-                  src={'https://trello-avatars.s3.amazonaws.com/' + member.avatarHash + '/50.png'}
-                />
-              ) : (
-                <div style={styles.undefinedAvatar}>{member.initials}</div>
-              )}
-            </div>
-          ))}
+          {this.props.dailyGoalsColumn &&
+            members.map(member => (
+              <div
+                onClick={this.props.toggleMemberSelection.bind(this, member.id)}
+                key={member.id}
+                style={
+                  this.props.selectedMembers.includes(member.id)
+                    ? { ...styles.avatarContainer, ...styles.avatarInTeam }
+                    : styles.avatarContainer
+                }
+                title={member.fullName}
+              >
+                {member.avatarHash ? (
+                  <img
+                    style={styles.avatar}
+                    alt={member.fullName}
+                    src={'https://trello-avatars.s3.amazonaws.com/' + member.avatarHash + '/50.png'}
+                  />
+                ) : (
+                  <div style={styles.undefinedAvatar}>{member.initials}</div>
+                )}
+              </div>
+            ))}
           {members.length === 0 && (
             <div style={styles.warningMessage}>
               Vous devez d'abord ajouter des membres à l'équipe
+            </div>
+          )}
+          {!this.props.dailyGoalsColumn && (
+            <div style={styles.warningMessage}>
+              Vous devez d'abord sélectionner une colonne Daily Goals
             </div>
           )}
         </div>
