@@ -18,6 +18,10 @@ const styles = {
     borderRadius: '50%',
     overflow: 'hidden',
   },
+  avatarInTeam: {
+    border: '4px solid orange',
+    margin: 1,
+  },
   undefinedAvatar: {
     width: 50,
     height: 50,

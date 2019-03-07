@@ -29,7 +29,11 @@ export default class DevSelectionPopin extends React.Component {
             <div
               onClick={this.props.toggleMemberSelection.bind(this, member.id)}
               key={member.id}
-              style={styles.avatarContainer}
+              style={
+                this.props.selectedMembers.includes(member.id)
+                  ? { ...styles.avatarContainer, ...styles.avatarInTeam }
+                  : styles.avatarContainer
+              }
               title={member.fullName}
             >
               {member.avatarHash ? (
