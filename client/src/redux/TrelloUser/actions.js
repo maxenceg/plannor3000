@@ -284,11 +284,11 @@ export function tagDevsOnCardError(error) {
   };
 }
 
-export function tagDevsOnCard(cardId, members) {
+export function tagDevsOnCard(cardId, membersId) {
   return dispatch => {
     dispatch(tagDevsOnCardRequest());
-    members.forEach(member =>
-      window.Trello.post(`cards/` + cardId + '/idMembers', { value: member.id }),
+    membersId.forEach(memberId =>
+      window.Trello.post(`cards/` + cardId + '/idMembers', { value: memberId }),
     );
   };
 }

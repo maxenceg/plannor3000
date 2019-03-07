@@ -14,8 +14,8 @@ import {
   tagDevsOnCard,
   moveCardToDailyGoals,
 } from 'redux/TrelloUser/actions';
-import { toggleEditTeamPopin } from 'redux/App/actions';
-import { getDevSelectionCardId } from 'redux/App';
+import { toggleDevSelectionPopin, toggleMemberSelection } from 'redux/App/actions';
+import { getDevSelectionCardId, getSelectedMembers } from 'redux/App';
 
 const mapStateToProps = state => ({
   selectedCard: getDevSelectionCardId(state),
@@ -24,14 +24,16 @@ const mapStateToProps = state => ({
   trelloUserSelectedBoard: getTrelloUserSelectedBoard(state),
   trelloUserBoardMembers: getTrelloUserBoardMembers(state),
   trelloUserBoardMembersOrigin: getTrelloUserBoardMembersOrigin(state),
+  selectedMembers: getSelectedMembers(state),
 });
 
 const mapDispatchToProps = {
   fetchTrelloUserBoardMembers,
-  toggleEditTeamPopin,
+  toggleDevSelectionPopin,
   toggleTrelloUserTeamMembership,
   tagDevsOnCard,
   moveCardToDailyGoals,
+  toggleMemberSelection,
 };
 
 export default connect(

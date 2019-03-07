@@ -14,23 +14,11 @@ export default class DevSelectionPopin extends React.Component {
     }
   }
   render() {
-    let selectedMembers = [];
     const members = this.props.devTeamMembers;
-    const toggleMembership = (memberId, event) => {
-      const memberIndex = selectedMembers
-        .map(function(member) {
-          return member.id;
-        })
-        .indexOf(memberId);
-      selectedMembers =
-        memberIndex !== -1
-          ? selectedMembers.filter(member => member.id !== memberId)
-          : selectedMembers.concat(members.filter(member => member.id === memberId));
-    };
 
-    const toggleEditTeamPopin = () => {
-      this.props.toggleEditTeamPopin();
-      this.props.tagDevsOnCard(this.props.selectedCard, selectedMembers);
+    const validateAction = () => {
+      this.props.toggleDevSelectionPopin();
+      this.props.tagDevsOnCard(this.props.selectedCard, this.props.selectedMembers);
       this.props.moveCardToDailyGoals(this.props.selectedCard, this.props.dailyGoalsColumn);
     };
     const content = (
@@ -39,7 +27,7 @@ export default class DevSelectionPopin extends React.Component {
           Carte #{this.props.selectedCard}
           {members.map(member => (
             <div
-              onClick={toggleMembership.bind(this, member.id)}
+              onClick={this.props.toggleMemberSelection.bind(this, member.id)}
               key={member.id}
               style={styles.avatarContainer}
               title={member.fullName}
@@ -57,7 +45,7 @@ export default class DevSelectionPopin extends React.Component {
           ))}
         </div>
         <div style={styles.editTeamPopinFooter}>
-          <BasicButton label="Valider" onClickAction={toggleEditTeamPopin} />
+          <BasicButton label="Valider" onClickAction={validateAction} />
         </div>
       </div>
     );
