@@ -35,6 +35,9 @@ const styles = {
   editTeamPopinFooter: {
     textAlign: 'right',
   },
+  warningMessage: {
+    marginBottom: 10,
+  },
 };
 
 export default styles;
