@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/plannor-3000/precache-manifest.b8f86151b4ee4ac8389e174a41c8a06f.js"
+  "/plannor3000/precache-manifest.06cfdef662f666de9c0cfa6da7382608.js"
 );
 
 workbox.clientsClaim();
@@ -28,7 +28,7 @@ self.__precacheManifest = [].concat(self.__precacheManifest || []);
 workbox.precaching.suppressWarnings();
 workbox.precaching.precacheAndRoute(self.__precacheManifest, {});
 
-workbox.routing.registerNavigationRoute("/plannor-3000/index.html", {
+workbox.routing.registerNavigationRoute("/plannor3000/index.html", {
   
   blacklist: [/^\/_/,/\/[^\/]+\.[^\/]+$/],
 });
