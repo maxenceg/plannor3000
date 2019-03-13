@@ -284,12 +284,22 @@ export function tagDevsOnCardError(error) {
   };
 }
 
-export function tagDevsOnCard(cardId, membersId) {
+export function moveCardToDailyGoalsSuccess(devId, cardId) {
+  return {
+    type: constants.MOVE_CARD_TO_DAILY_GOALS.SUCCESS,
+    payload: { devId, cardId },
+  };
+}
+
+export function tagDevsOnCard(card, membersId) {
   return dispatch => {
     dispatch(tagDevsOnCardRequest());
-    membersId.forEach(memberId =>
-      window.Trello.post(`cards/` + cardId + '/idMembers', { value: memberId }),
-    );
+    membersId.forEach(memberId => {
+      if (window.Trello.post(`cards/` + card.id + '/idMembers', { value: memberId })) {
+        console.log(card.id, memberId);
+        dispatch(moveCardToDailyGoalsSuccess(memberId, card.id));
+      }
+    });
   };
 }
 
@@ -299,10 +309,10 @@ export function moveCardToDailyGoalsRequest() {
   };
 }
 
-export function moveCardToDailyGoals(cardId, dailyGoalsColumnId) {
+export function moveCardToDailyGoals(card, dailyGoalsColumnId) {
   return dispatch => {
     dispatch(moveCardToDailyGoalsRequest());
-    window.Trello.put(`cards/` + cardId + '/idList', { value: dailyGoalsColumnId });
+    window.Trello.put(`cards/` + card.id + '/idList', { value: dailyGoalsColumnId });
   };
 }
 

@@ -153,6 +153,18 @@ export default function reducer(state = initialState, action) {
           }),
         },
       };
+    case constants.MOVE_CARD_TO_DAILY_GOALS.SUCCESS:
+      return {
+        ...state,
+        project: {
+          ...state.project,
+          devTeam: state.project.devTeam.filter(dev =>
+            dev.id === action.payload.devId
+              ? { ...dev, dailyCards: [...dev.dailyCards, action.payload.cardId] }
+              : dev,
+          ),
+        },
+      };
     default:
       return state;
   }

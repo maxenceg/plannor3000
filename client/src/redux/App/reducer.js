@@ -4,7 +4,9 @@ export const initialState = {
   isEditTeamPopinOpen: false,
   devSelectionPopin: {
     isOpen: false,
-    selectedCardId: null,
+    selectedCard: {
+      id: null,
+    },
     selectedMembers: [],
   },
 };
@@ -29,7 +31,10 @@ export default function reducer(state = initialState, action) {
         ...state,
         devSelectionPopin: {
           ...state.devSelectionPopin,
-          selectedCardId: action.payload.cardId,
+          selectedCard: {
+            ...state.devSelectionPopin.selectedCard,
+            id: action.payload.cardId,
+          },
         },
       };
     case constants.TOGGLE_MEMBER_SELECTION:
