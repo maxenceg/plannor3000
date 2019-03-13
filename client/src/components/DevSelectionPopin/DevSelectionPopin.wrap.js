@@ -15,10 +15,10 @@ import {
   moveCardToDailyGoals,
 } from 'redux/TrelloUser/actions';
 import { toggleDevSelectionPopin, toggleMemberSelection } from 'redux/App/actions';
-import { getDevSelectionCardId, getSelectedMembers } from 'redux/App';
+import { getDevSelectionCard, getSelectedMembers } from 'redux/App';
 
 const mapStateToProps = state => ({
-  selectedCard: getDevSelectionCardId(state),
+  selectedCard: getDevSelectionCard(state),
   devTeamMembers: getTrelloUserDevTeam(state),
   dailyGoalsColumn: getTrelloUserDailyGoalsColumn(state),
   trelloUserSelectedBoard: getTrelloUserSelectedBoard(state),
