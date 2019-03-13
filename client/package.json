@@ -29,12 +29,14 @@
   "scripts": {
     "start": "react-app-rewired start",
     "build": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build",
+    "build:local": "PUBLIC_URL=/ react-app-rewired build",
     "test": "react-app-rewired test",
     "eject": "react-app-rewired eject",
     "analyze": "env-cmd .env.${REACT_APP_ENV} react-app-rewired build --analyze-bundle",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "test:coverage": "npm run test -- --coverage",
+    "serve": "serve build",
     "generate": "plop --plopfile scripts/generators/index.js",
     "lint": "eslint --ext .jsx,.js -c .eslintrc src",
     "lint:fix": "eslint --fix --ext .jsx,.js -c .eslintrc src"
@@ -111,6 +113,7 @@
     "react-app-rewired": "1.6.2",
     "react-test-renderer": "16.6.3",
     "redux-saga-test-plan": "3.7.0",
+    "serve": "^10.1.2",
     "typescript": "^3.2.2"
   }
 }
