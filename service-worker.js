@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/plannor3000/precache-manifest.021b85ea13989735a8380fdc90424ca1.js"
+  "/plannor3000/precache-manifest.80c638a7012024d3040e04773ff1bc99.js"
 );
 
 workbox.clientsClaim();
