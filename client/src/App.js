@@ -15,6 +15,8 @@ const RootComponentWithRoutes = () => (
   </Root>
 );
 
+const appBasename = process.env.NODE_ENV === 'production' ? '/plannor3000' : '';
+
 const store = configureStore();
 
 export default class App extends React.Component {
@@ -22,7 +24,7 @@ export default class App extends React.Component {
     return (
       <Provider store={store}>
         <MuiThemeProvider theme={theme}>
-          <Router>
+          <Router basename={appBasename}>
             <Route path="/" component={RootComponentWithRoutes} />
           </Router>
         </MuiThemeProvider>
