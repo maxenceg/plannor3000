@@ -12,9 +12,10 @@ const { store, persistor } = configureStore(history);
 
 const rootEl = document.getElementById('root');
 
+const serviceWorkerConfig = {};
 if (rootEl) {
   ReactDOM.render(<App history={history} store={store} persistor={persistor} />, rootEl);
-  register();
+  register(serviceWorkerConfig);
 }
 
 if (module.hot) {
