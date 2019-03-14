@@ -3,6 +3,7 @@ import React from 'react';
 import PlannorPopin from '../PlannorPopin';
 import styles from './DevSelectionPopin.style';
 import BasicButton from '../BasicButton';
+import TextField from '@material-ui/core/TextField';
 
 export default class DevSelectionPopin extends React.Component {
   componentDidMount() {
@@ -26,29 +27,60 @@ export default class DevSelectionPopin extends React.Component {
     const content = (
       <div>
         <div>
-          {this.props.dailyGoalsColumn &&
-            members.map(member => (
-              <div
-                onClick={this.props.toggleMemberSelection.bind(this, member.id)}
-                key={member.id}
-                style={
-                  this.props.selectedMembers.includes(member.id)
-                    ? { ...styles.avatarContainer, ...styles.avatarInTeam }
-                    : styles.avatarContainer
-                }
-                title={member.fullName}
-              >
-                {member.avatarHash ? (
-                  <img
-                    style={styles.avatar}
-                    alt={member.fullName}
-                    src={'https://trello-avatars.s3.amazonaws.com/' + member.avatarHash + '/50.png'}
-                  />
-                ) : (
-                  <div style={styles.undefinedAvatar}>{member.initials}</div>
-                )}
-              </div>
-            ))}
+          {this.props.dailyGoalsColumn && (
+            <div>
+              {members.map(member => (
+                <div
+                  onClick={this.props.toggleMemberSelection.bind(this, member.id)}
+                  key={member.id}
+                  style={
+                    this.props.selectedMembers.includes(member.id)
+                      ? { ...styles.avatarContainer, ...styles.avatarInTeam }
+                      : styles.avatarContainer
+                  }
+                  title={member.fullName}
+                >
+                  {member.avatarHash ? (
+                    <img
+                      style={styles.avatar}
+                      alt={member.fullName}
+                      src={
+                        'https://trello-avatars.s3.amazonaws.com/' + member.avatarHash + '/50.png'
+                      }
+                    />
+                  ) : (
+                    <div style={styles.undefinedAvatar}>{member.initials}</div>
+                  )}
+                </div>
+              ))}
+              <br />
+              <TextField
+                id="time"
+                label="Début"
+                type="time"
+                defaultValue="10:00"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputProps={{
+                  step: 900, // 15 min
+                }}
+              />
+              &nbsp;
+              <TextField
+                id="time"
+                label="Fin"
+                type="time"
+                defaultValue="12:30"
+                InputLabelProps={{
+                  shrink: true,
+                }}
+                inputProps={{
+                  step: 900, // 15 min
+                }}
+              />
+            </div>
+          )}
           {members.length === 0 && (
             <div style={styles.warningMessage}>
               Vous devez d'abord ajouter des membres à l'équipe
