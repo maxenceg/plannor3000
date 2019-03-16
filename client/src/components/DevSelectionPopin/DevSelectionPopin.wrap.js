@@ -13,6 +13,7 @@ import {
   toggleTrelloUserTeamMembership,
   tagDevsOnCard,
   moveCardToDailyGoals,
+  removeCardFromSprintBacklog,
 } from 'redux/TrelloUser/actions';
 import { toggleDevSelectionPopin, toggleMemberSelection } from 'redux/App/actions';
 import { getDevSelectionCard, getSelectedMembers } from 'redux/App';
@@ -34,6 +35,7 @@ const mapDispatchToProps = {
   tagDevsOnCard,
   moveCardToDailyGoals,
   toggleMemberSelection,
+  removeCardFromSprintBacklog,
 };
 
 export default connect(

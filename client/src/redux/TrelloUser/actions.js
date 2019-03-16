@@ -44,6 +44,7 @@ export const constants = {
   ADD_TRELLO_USER_SPRINT_COLUMN: 'ADD_TRELLO_USER_SPRINT_COLUMN',
   TOGGLE_TRELLO_TEAM_MEMBERSHIP: 'TOGGLE_TRELLO_TEAM_MEMBERSHIP',
   ADD_CARD_TO_DEV_DAILY_CARDS: 'ADD_CARD_TO_DEV_DAILY_CARDS',
+  REMOVE_CARDS_FROM_SPRINT_BACKLOG: 'REMOVE_CARDS_FROM_SPRINT_BACKLOG',
 };
 
 export function fetchTrelloUserRequest() {
@@ -313,6 +314,13 @@ export function moveCardToDailyGoals(card, dailyGoalsColumnId) {
   return dispatch => {
     dispatch(moveCardToDailyGoalsRequest());
     window.Trello.put(`cards/` + card.id + '/idList', { value: dailyGoalsColumnId });
+  };
+}
+
+export function removeCardFromSprintBacklog(cardId) {
+  return {
+    type: constants.REMOVE_CARDS_FROM_SPRINT_BACKLOG,
+    payload: { cardId },
   };
 }
 

@@ -23,6 +23,7 @@ export default class DevSelectionPopin extends React.Component {
       this.props.tagDevsOnCard(this.props.selectedCard, this.props.selectedMembers);
       if (this.props.selectedMembers.length > 0) {
         this.props.moveCardToDailyGoals(this.props.selectedCard, this.props.dailyGoalsColumn);
+        this.props.removeCardFromSprintBacklog(this.props.selectedCard.id);
       }
     };
     const onChangeStartTime = event => {

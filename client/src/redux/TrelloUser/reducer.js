@@ -165,6 +165,17 @@ export default function reducer(state = initialState, action) {
           ),
         },
       };
+    case constants.REMOVE_CARDS_FROM_SPRINT_BACKLOG:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          sprintColumn: {
+            ...state.user.sprintColumn,
+            cards: state.user.sprintColumn.cards.filter(card => card.id !== action.payload.cardId),
+          },
+        },
+      };
     default:
       return state;
   }
