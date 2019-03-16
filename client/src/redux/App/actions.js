@@ -1,7 +1,7 @@
 export const constants = {
   TOGGLE_EDIT_TEAM_POPIN: 'TOGGLE_EDIT_TEAM_POPIN',
   TOGGLE_DEV_SELECTION_POPIN: 'TOGGLE_DEV_SELECTION_POPIN',
-  ADD_DEV_SELECTION_CARD_ID: 'ADD_DEV_SELECTION_CARD_ID',
+  ADD_DEV_SELECTION_CARD: 'ADD_DEV_SELECTION_CARD',
   TOGGLE_MEMBER_SELECTION: 'TOGGLE_MEMBER_SELECTION',
 };
 
@@ -17,10 +17,10 @@ export function toggleDevSelectionPopin() {
   };
 }
 
-export function addDevSelectionCardId(cardId) {
+export function addDevSelectionCard(card) {
   return {
-    type: constants.ADD_DEV_SELECTION_CARD_ID,
-    payload: { cardId },
+    type: constants.ADD_DEV_SELECTION_CARD,
+    payload: { card },
   };
 }
 
@@ -34,5 +34,5 @@ export function toggleMemberSelection(memberId) {
 export default {
   toggleEditTeamPopin,
   toggleDevSelectionPopin,
-  addDevSelectionCardId,
+  addDevSelectionCard,
 };

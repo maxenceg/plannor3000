@@ -26,14 +26,15 @@ export default function reducer(state = initialState, action) {
           isOpen: !state.devSelectionPopin.isOpen,
         },
       };
-    case constants.ADD_DEV_SELECTION_CARD_ID:
+    case constants.ADD_DEV_SELECTION_CARD:
       return {
         ...state,
         devSelectionPopin: {
           ...state.devSelectionPopin,
           selectedCard: {
-            ...state.devSelectionPopin.selectedCard,
-            id: action.payload.cardId,
+            ...action.payload.card,
+            startTime: { hour: 10, minute: 0 },
+            endTime: { hour: 12, minute: 30 },
           },
         },
       };

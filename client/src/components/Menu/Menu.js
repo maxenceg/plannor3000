@@ -64,9 +64,9 @@ export default class Menu extends React.Component {
     const editTeamAction = () => {
       this.props.toggleEditTeamPopin();
     };
-    const openDevSelectionPopin = cardId => {
+    const openDevSelectionPopin = card => {
       this.props.toggleDevSelectionPopin();
-      this.props.addDevSelectionCardId(cardId);
+      this.props.addDevSelectionCard(card);
     };
     return (
       <div style={this.props.style}>
@@ -121,7 +121,7 @@ export default class Menu extends React.Component {
                 content={card.name}
                 icon={{
                   name: 'arrow_right_alt',
-                  action: () => openDevSelectionPopin(card.id),
+                  action: () => openDevSelectionPopin(card),
                 }}
               />
             ))}
