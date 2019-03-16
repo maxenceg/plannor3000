@@ -19,20 +19,6 @@ export default class ProdPlan extends React.Component {
       { id: 7, hour: 16, minute: 0 },
       { id: 8, hour: 17, minute: 0 },
     ];
-    const cards1 = [
-      { id: 1, startTime: { hour: 9, minute: 30 }, endTime: { hour: 11, minute: 0 } },
-      { id: 2, startTime: { hour: 11, minute: 15 }, endTime: { hour: 15, minute: 0 } },
-      { id: 3, startTime: { hour: 15, minute: 15 }, endTime: { hour: 18, minute: 0 } },
-    ];
-    const cards2 = [
-      { id: 1, startTime: { hour: 9, minute: 30 }, endTime: { hour: 12, minute: 15 } },
-      { id: 2, startTime: { hour: 14, minute: 0 }, endTime: { hour: 17, minute: 0 } },
-    ];
-    const cards3 = [
-      { id: 1, startTime: { hour: 9, minute: 45 }, endTime: { hour: 11, minute: 45 } },
-      { id: 2, startTime: { hour: 12, minute: 0 }, endTime: { hour: 15, minute: 30 } },
-      { id: 3, startTime: { hour: 16, minute: 15 }, endTime: { hour: 18, minute: 0 } },
-    ];
     return (
       <div style={{ ...this.props.style, ...styles.container }}>
         <div style={styles.headerContainer}>
