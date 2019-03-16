@@ -8,6 +8,11 @@ import styles from './Menu.style';
 
 export default class Menu extends React.Component {
   componentWillMount() {
+    const fetchData = () => {
+      this.props.fetchTrelloUser();
+      this.props.fetchTrelloUserBoards();
+    };
+
     window.Trello.authorize({
       type: 'popup',
       name: 'Plannor 3000',
@@ -16,12 +21,16 @@ export default class Menu extends React.Component {
         write: 'true',
       },
       expiration: 'never',
+      success: fetchData,
     });
-    this.props.fetchTrelloUser();
-    this.props.fetchTrelloUserBoards();
   }
 
   render() {
+    const fetchData = () => {
+      this.props.fetchTrelloUser();
+      this.props.fetchTrelloUserBoards();
+    };
+
     const connectToTrello = () => {
       window.Trello.authorize({
         type: 'popup',
@@ -31,9 +40,8 @@ export default class Menu extends React.Component {
           write: 'true',
         },
         expiration: 'never',
+        success: fetchData,
       });
-      this.props.fetchTrelloUser();
-      this.props.fetchTrelloUserBoards();
     };
     const boardSelectOptions = this.props.trelloUserBoards
       ? this.props.trelloUserBoards.map(function(board) {
@@ -70,7 +78,7 @@ export default class Menu extends React.Component {
     };
     return (
       <div style={this.props.style}>
-        {!this.props.trelloUserFullName && (
+        {!window.Trello.authorized() && (
           <BasicButton
             style={styles.connectToTrelloButton}
             label="Se connecter avec Trello"
