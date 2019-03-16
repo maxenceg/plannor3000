@@ -4,6 +4,7 @@ import PlannorPopin from '../PlannorPopin';
 import styles from './DevSelectionPopin.style';
 import BasicButton from '../BasicButton';
 import TextField from '@material-ui/core/TextField';
+import { splitTimeFromString, stringTimeFromObject } from '../../helpers/TimeHelpers/timeHelpers';
 
 export default class DevSelectionPopin extends React.Component {
   componentDidMount() {
@@ -24,6 +25,15 @@ export default class DevSelectionPopin extends React.Component {
         this.props.moveCardToDailyGoals(this.props.selectedCard, this.props.dailyGoalsColumn);
       }
     };
+    const onChangeStartTime = event => {
+      this.props.selectedCard.startTime = splitTimeFromString(event.target.value);
+    };
+    const onChangeEndTime = event => {
+      this.props.selectedCard.endTime = splitTimeFromString(event.target.value);
+    };
+    const startTimeString = stringTimeFromObject(this.props.selectedCard.startTime);
+    const endTimeString = stringTimeFromObject(this.props.selectedCard.endTime);
+
     const content = (
       <div>
         <div>
@@ -55,29 +65,31 @@ export default class DevSelectionPopin extends React.Component {
               ))}
               <br />
               <TextField
-                id="time"
+                id="start"
                 label="Début"
                 type="time"
-                defaultValue="10:00"
+                defaultValue={startTimeString}
                 InputLabelProps={{
                   shrink: true,
                 }}
                 inputProps={{
                   step: 900, // 15 min
                 }}
+                onChange={onChangeStartTime}
               />
               &nbsp;
               <TextField
-                id="time"
+                id="end"
                 label="Fin"
                 type="time"
-                defaultValue="12:30"
+                defaultValue={endTimeString}
                 InputLabelProps={{
                   shrink: true,
                 }}
                 inputProps={{
                   step: 900, // 15 min
                 }}
+                onChange={onChangeEndTime}
               />
             </div>
           )}
