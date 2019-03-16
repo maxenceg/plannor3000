@@ -43,6 +43,7 @@ export const constants = {
   ADD_TRELLO_USER_DAILY_GOALS_COLUMN: 'ADD_TRELLO_USER_DAILY_GOALS_COLUMN',
   ADD_TRELLO_USER_SPRINT_COLUMN: 'ADD_TRELLO_USER_SPRINT_COLUMN',
   TOGGLE_TRELLO_TEAM_MEMBERSHIP: 'TOGGLE_TRELLO_TEAM_MEMBERSHIP',
+  ADD_CARD_TO_DEV_DAILY_CARDS: 'ADD_CARD_TO_DEV_DAILY_CARDS',
 };
 
 export function fetchTrelloUserRequest() {
@@ -284,10 +285,10 @@ export function tagDevsOnCardError(error) {
   };
 }
 
-export function moveCardToDailyGoalsSuccess(devId, cardId) {
+export function addCardToDevDailyCards(devId, card) {
   return {
-    type: constants.MOVE_CARD_TO_DAILY_GOALS.SUCCESS,
-    payload: { devId, cardId },
+    type: constants.ADD_CARD_TO_DEV_DAILY_CARDS,
+    payload: { devId, card },
   };
 }
 
@@ -296,8 +297,7 @@ export function tagDevsOnCard(card, membersId) {
     dispatch(tagDevsOnCardRequest());
     membersId.forEach(memberId => {
       if (window.Trello.post(`cards/` + card.id + '/idMembers', { value: memberId })) {
-        console.log(card.id, memberId);
-        dispatch(moveCardToDailyGoalsSuccess(memberId, card.id));
+        dispatch(addCardToDevDailyCards(memberId, card));
       }
     });
   };

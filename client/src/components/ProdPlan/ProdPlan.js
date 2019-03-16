@@ -54,7 +54,7 @@ export default class ProdPlan extends React.Component {
                   dayStartTime={dayStartTime}
                   dayEndTime={dayEndTime}
                   member={member}
-                  cards={this.props.getDailyGoalsCardsRelatedToMember(member)}
+                  cards={member.dailyCards}
                 />
               );
             })}
