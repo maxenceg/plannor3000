@@ -3,6 +3,7 @@ import React from 'react';
 import PlanColumn from '../PlanColumn';
 import ColumnHeader from '../ColumnHeader';
 import HourLine from '../HourLine';
+import CurrentHourLine from '../CurrentHourLine';
 import styles from './ProdPlan.style';
 
 export default class ProdPlan extends React.Component {
@@ -29,6 +30,7 @@ export default class ProdPlan extends React.Component {
           </div>
         </div>
         <div style={styles.planContainer}>
+          <CurrentHourLine dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
           {hoursOfTheDay.map(time => (
             <HourLine
               key={time.id}
