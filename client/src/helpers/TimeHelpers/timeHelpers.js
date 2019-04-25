@@ -18,3 +18,10 @@ export function stringTimeFromObject(timeObject) {
     timeObject.minute >= 10 ? timeObject.minute.toString() : '0' + timeObject.minute.toString();
   return hours + ':' + minutes;
 }
+
+export function getCurrentTime() {
+  return {
+    hour: new Date().getHours(),
+    minute: new Date().getMinutes(),
+  };
+}

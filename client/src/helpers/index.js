@@ -1,1 +1,1 @@
-export { timeInMinutes, durationInMinutes } from './TimeHelpers/timeHelpers';
+export { timeInMinutes, durationInMinutes, getCurrentTime } from './TimeHelpers/timeHelpers';

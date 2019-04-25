@@ -1,16 +1,13 @@
 // @flow
 import React from 'react';
-import { timeInMinutes, durationInMinutes } from '../../helpers';
+import { timeInMinutes, durationInMinutes, getCurrentTime } from '../../helpers';
 import styles from './CurrentHourLine.style';
 
 export default class CurrentHourLine extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      currentTime: {
-        hour: new Date().getHours(),
-        minute: new Date().getMinutes(),
-      },
+      currentTime: getCurrentTime(),
     };
   }
   componentDidMount() {
@@ -24,10 +21,7 @@ export default class CurrentHourLine extends React.Component {
 
   updateCurrentTime = () => {
     this.setState({
-      currentTime: {
-        hour: new Date().getHours(),
-        minute: new Date().getMinutes(),
-      },
+      currentTime: getCurrentTime(),
     });
   };
 
