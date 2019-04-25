@@ -21,6 +21,10 @@ const store = configureStore();
 
 export default class App extends React.Component {
   render() {
+    Notification.requestPermission(function(status) {
+      console.log('Notification permission status:', status);
+    });
+
     return (
       <Provider store={store}>
         <MuiThemeProvider theme={theme}>
