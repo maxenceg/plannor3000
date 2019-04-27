@@ -1,6 +1,8 @@
+$hours-column-width: 60px;
+
 .prod-plan {
   display: flex;
-  flex-grow: 100;
+  flex-grow: 1;
   flex-direction: column;
   position: relative;
 
@@ -9,13 +11,12 @@
       position: relative;
       display: flex;
       width: 100%;
-      overflow-x: scroll;
       justify-content: center;
     }
     &__columns-container {
       display: flex;
-      margin-left: 60px;
       width: 100%;
+      margin-left: $hours-column-width;
       justify-content: center;
     }
   }
@@ -24,18 +25,15 @@
       position: relative;
       display: flex;
       width: 100%;
-      overflow-x: scroll;
       justify-content: center;
-      flex-grow: 100;
+      flex-grow: 1;
     }
     &__columns {
       &__container {
         display: flex;
-        margin-left: 60px;
+        margin-left: $hours-column-width;
         width: 100%;
-        overflow-x: scroll;
         justify-content: center;
-        flex-grow: 100;
       }
 
       &__error {
