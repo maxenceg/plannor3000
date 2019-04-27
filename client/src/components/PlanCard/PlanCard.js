@@ -20,8 +20,19 @@ export default class PlanCard extends React.Component {
     const timedCardContainerStyle =
       topProp && heightProp ? { top: topProp, height: heightProp, position: 'absolute' } : null;
     return (
-      <div style={{ ...this.props.style, ...styles.cardContainer, ...timedCardContainerStyle }}>
-        {this.props.content}
+      <div
+        style={{ ...this.props.style, ...styles.cardContainer, ...timedCardContainerStyle }}
+        onClick={this.props.cardAction}
+      >
+        <div style={styles.header}>
+          <div style={styles.idShort}>#{this.props.card.idShort}</div>
+          <div style={styles.labelsContainer}>
+            {this.props.card.labels.map(label => (
+              <div style={{ backgroundColor: label.color, ...styles.label }}>{label.name}</div>
+            ))}
+          </div>
+        </div>
+        <div style={styles.cardName}>{this.props.card.name}</div>
         <div style={styles.footerIcon}>
           <i style={styles.icon} className="material-icons" onClick={this.props.icon.action}>
             {this.props.icon.name}

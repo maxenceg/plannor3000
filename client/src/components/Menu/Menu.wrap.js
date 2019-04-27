@@ -24,6 +24,7 @@ import {
 import {
   toggleEditTeamPopin,
   toggleDevSelectionPopin,
+  toggleCardDescriptionPopin,
   addDevSelectionCard,
 } from 'redux/App/actions';
 
@@ -47,6 +48,7 @@ const mapDispatchToProps = {
   addTrelloUserDailyGoalsColumn,
   toggleEditTeamPopin,
   toggleDevSelectionPopin,
+  toggleCardDescriptionPopin,
   addDevSelectionCard,
   addTrelloUserSprintColumn,
   fetchSprintBacklogCards,

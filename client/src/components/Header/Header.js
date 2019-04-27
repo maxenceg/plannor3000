@@ -3,6 +3,7 @@ import React from 'react';
 import { IntlProvider, addLocaleData } from 'react-intl';
 import fr from 'react-intl/locale-data/fr';
 import en from 'react-intl/locale-data/en';
+import { ReactComponent as Logo } from '../../assets/plannor3000-logo.svg';
 
 import frMessages from 'translations/fr.json';
 import enMessages from 'translations/en.json';
@@ -21,7 +22,7 @@ export default class Header extends React.Component {
     return (
       <IntlProvider locale="fr" messages={locales.fr}>
         <div style={styles.header}>
-            Plannor 3000
+          <Logo style={styles.logo} />
         </div>
       </IntlProvider>
     );

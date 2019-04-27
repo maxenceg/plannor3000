@@ -9,6 +9,10 @@ export const initialState = {
     },
     selectedMembers: [],
   },
+  cardDescriptionPopin: {
+    isOpen: false,
+    card: null,
+  },
 };
 
 export default function reducer(state = initialState, action) {
@@ -24,6 +28,15 @@ export default function reducer(state = initialState, action) {
         devSelectionPopin: {
           ...state.devSelectionPopin,
           isOpen: !state.devSelectionPopin.isOpen,
+        },
+      };
+    case constants.TOGGLE_CARD_DESCRIPTION_POPIN:
+      return {
+        ...state,
+        cardDescriptionPopin: {
+          ...state.cardDescriptionPopin,
+          isOpen: !state.cardDescriptionPopin.isOpen,
+          card: action.payload.card,
         },
       };
     case constants.ADD_DEV_SELECTION_CARD:

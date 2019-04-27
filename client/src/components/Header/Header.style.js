@@ -6,6 +6,10 @@ const styles = {
     fontFamily: 'Roboto',
     color: 'white',
   },
+  logo: {
+    height: 20,
+    color: 'white',
+  },
 };
 
 export default styles;

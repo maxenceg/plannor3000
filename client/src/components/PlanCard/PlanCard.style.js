@@ -1,5 +1,9 @@
 const styles = {
   cardContainer: {
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    cursor: 'pointer',
     width: '100%',
     backgroundColor: '#2196f3dd',
     MozBoxShadow: '2px 2px 10px #cccccc',
@@ -16,6 +20,32 @@ const styles = {
   },
   icon: {
     cursor: 'pointer',
+  },
+  header: {
+    display: 'flex',
+    alignItems: 'flex-start',
+    fontSize: 11,
+  },
+  idShort: {
+    backgroundColor: 'yellow',
+    borderRadius: 5,
+    color: 'black',
+    padding: '4px 5px',
+  },
+  labelsContainer: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    marginBottom: -5,
+  },
+  label: {
+    marginLeft: 5,
+    marginBottom: 5,
+    borderRadius: 5,
+    padding: '4px 5px',
+    whiteSpace: 'nowrap',
+  },
+  cardName: {
+    marginTop: 10,
   },
 };
 

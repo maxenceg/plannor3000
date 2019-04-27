@@ -221,7 +221,7 @@ export const fetchSprintBacklogCards = column => {
     dispatch(fetchTrelloUserSprintBacklogCardsRequest());
     window.Trello.get(
       `lists/` + column + `/cards`,
-      { fields: 'idShort,name,idMembers' },
+      { fields: 'idShort,name,idMembers,labels,desc' },
       data => dispatch(fetchTrelloUserSprintBacklogCardsSuccess(data)),
       error => dispatch(fetchTrelloUserSprintBacklogCardsError(error)),
     );
