@@ -5,6 +5,11 @@ import styles from './PlanCard.style';
 
 export default class PlanCard extends React.Component {
   render() {
+    const handleClick = event => {
+      event.stopPropagation();
+      this.props.icon.action();
+    };
+
     const topProp =
       this.props.startTime && this.props.dayStartTime && this.props.dayEndTime
         ? (100 * (timeInMinutes(this.props.startTime) - timeInMinutes(this.props.dayStartTime))) /
@@ -28,13 +33,15 @@ export default class PlanCard extends React.Component {
           <div style={styles.idShort}>#{this.props.card.idShort}</div>
           <div style={styles.labelsContainer}>
             {this.props.card.labels.map(label => (
-              <div style={{ backgroundColor: label.color, ...styles.label }}>{label.name}</div>
+              <div style={{ backgroundColor: label.color, ...styles.label }} key={label.name}>
+                {label.name}
+              </div>
             ))}
           </div>
         </div>
         <div style={styles.cardName}>{this.props.card.name}</div>
         <div style={styles.footerIcon}>
-          <i style={styles.icon} className="material-icons" onClick={this.props.icon.action}>
+          <i style={styles.icon} className="material-icons" onClick={handleClick}>
             {this.props.icon.name}
           </i>
         </div>
