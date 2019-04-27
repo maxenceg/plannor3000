@@ -4,6 +4,7 @@ const styles = {
     top: 0,
     borderTop: 'red solid 1px',
     width: '100%',
+    zIndex: 2,
   },
 };
 

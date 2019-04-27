@@ -9,7 +9,7 @@ const styles = {
     MozBoxShadow: '2px 2px 10px #cccccc',
     WebkitBoxShadow: '2px 2px 10px #cccccc',
     boxShadow: '2px 2px 10px #cccccc',
-    zIndex: 1,
+    zIndex: 100,
     borderRadius: 10,
   },
 };
