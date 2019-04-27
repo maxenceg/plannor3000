@@ -9,7 +9,7 @@ import './ProdPlan.scss'
 export default class ProdPlan extends React.Component {
   render() {
     const dayStartTime = { hour: 9, minute: 30 };
-    const dayEndTime = { hour: 18, minute: 0 };
+    const dayEndTime = { hour: 19, minute: 0 };
     const hoursOfTheDay = [
       { id: 1, hour: 9, minute: 30 },
       { id: 2, hour: 10, minute: 30 },
@@ -19,6 +19,7 @@ export default class ProdPlan extends React.Component {
       { id: 6, hour: 15, minute: 0 },
       { id: 7, hour: 16, minute: 0 },
       { id: 8, hour: 17, minute: 0 },
+      { id: 9, hour: 18, minute: 0 },
     ];
     return (
       <div className="prod-plan">

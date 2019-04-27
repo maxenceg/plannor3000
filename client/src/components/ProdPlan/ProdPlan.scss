@@ -27,6 +27,7 @@ $hours-column-width: 60px;
       width: 100%;
       justify-content: center;
       flex-grow: 1;
+      overflow: hidden;
     }
     &__columns {
       &__container {
