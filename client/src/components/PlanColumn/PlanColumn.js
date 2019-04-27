@@ -19,6 +19,7 @@ export default class PlanColumn extends React.Component {
             return (
               <PlanCard
                 key={card.id}
+                card={card}
                 dayStartTime={this.props.dayStartTime}
                 dayEndTime={this.props.dayEndTime}
                 startTime={card.startTime}
