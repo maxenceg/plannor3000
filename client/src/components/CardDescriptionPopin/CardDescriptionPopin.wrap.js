@@ -2,10 +2,11 @@ import CardDescriptionPopin from './CardDescriptionPopin';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import { toggleCardDescriptionPopin } from 'redux/App/actions';
-import { getCardDescriptionPopinCard } from 'redux/App/selectors';
+import { getCardDescriptionPopinCard, isCardDescriptionPopinOpen } from 'redux/App/selectors';
 
 const mapStateToProps = state => ({
   card: getCardDescriptionPopinCard(state),
+  isCardDescriptionPopinOpen: isCardDescriptionPopinOpen(state),
 });
 
 const mapDispatchToProps = {

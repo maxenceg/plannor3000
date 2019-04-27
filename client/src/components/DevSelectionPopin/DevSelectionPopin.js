@@ -2,7 +2,6 @@
 import React from 'react';
 import PlannorPopin from '../PlannorPopin';
 import styles from './DevSelectionPopin.style';
-import BasicButton from '../BasicButton';
 import TextField from '@material-ui/core/TextField';
 import { splitTimeFromString, stringTimeFromObject } from '../../helpers/TimeHelpers/timeHelpers';
 
@@ -105,11 +104,18 @@ export default class DevSelectionPopin extends React.Component {
             </div>
           )}
         </div>
-        <div style={styles.editTeamPopinFooter}>
-          <BasicButton label="Valider" onClickAction={validateAction} />
-        </div>
       </div>
     );
-    return <PlannorPopin style={styles.editTeamPopin} content={content} />;
+    return (
+      <PlannorPopin
+        isOpen={this.props.isDevSelectionPopinOpen}
+        handleClose={this.props.toggleDevSelectionPopin}
+        closeLabel="Annuler"
+        handleSubmit={validateAction}
+        submitLabel="Valider"
+        title="Sélection du dev"
+        content={content}
+      />
+    );
   }
 }

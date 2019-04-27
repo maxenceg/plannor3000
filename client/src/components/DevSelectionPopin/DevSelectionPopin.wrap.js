@@ -16,12 +16,13 @@ import {
   removeCardFromSprintBacklog,
 } from 'redux/TrelloUser/actions';
 import { toggleDevSelectionPopin, toggleMemberSelection } from 'redux/App/actions';
-import { getDevSelectionCard, getSelectedMembers } from 'redux/App';
+import { getDevSelectionCard, getSelectedMembers, isDevSelectionPopinOpen } from 'redux/App';
 
 const mapStateToProps = state => ({
   selectedCard: getDevSelectionCard(state),
   devTeamMembers: getTrelloUserDevTeam(state),
   dailyGoalsColumn: getTrelloUserDailyGoalsColumn(state),
+  isDevSelectionPopinOpen: isDevSelectionPopinOpen(state),
   trelloUserSelectedBoard: getTrelloUserSelectedBoard(state),
   trelloUserBoardMembers: getTrelloUserBoardMembers(state),
   trelloUserBoardMembersOrigin: getTrelloUserBoardMembersOrigin(state),

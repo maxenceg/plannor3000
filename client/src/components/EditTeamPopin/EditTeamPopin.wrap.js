@@ -11,11 +11,13 @@ import {
   toggleTrelloUserTeamMembership,
 } from 'redux/TrelloUser/actions';
 import { toggleEditTeamPopin } from 'redux/App/actions';
+import { isEditTeamPopinOpen } from 'redux/App';
 
 const mapStateToProps = state => ({
   trelloUserSelectedBoard: getTrelloUserSelectedBoard(state),
   trelloUserBoardMembers: getTrelloUserBoardMembers(state),
   trelloUserBoardMembersOrigin: getTrelloUserBoardMembersOrigin(state),
+  isEditTeamPopinOpen: isEditTeamPopinOpen(state),
 });
 
 const mapDispatchToProps = {

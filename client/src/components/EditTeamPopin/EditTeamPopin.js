@@ -2,7 +2,6 @@
 import React from 'react';
 import PlannorPopin from '../PlannorPopin';
 import styles from './EditTeamPopin.style';
-import BasicButton from '../BasicButton';
 
 export default class EditTeamPopin extends React.Component {
   componentDidMount() {
@@ -43,11 +42,16 @@ export default class EditTeamPopin extends React.Component {
             </div>
           ))}
         </div>
-        <div style={styles.editTeamPopinFooter}>
-          <BasicButton label="Valider" onClickAction={this.props.toggleEditTeamPopin} />
-        </div>
       </div>
     );
-    return <PlannorPopin style={styles.editTeamPopin} content={content} />;
+    return (
+      <PlannorPopin
+        isOpen={this.props.isEditTeamPopinOpen}
+        handleClose={this.props.toggleEditTeamPopin}
+        closeLabel="Valider"
+        title="Ajouter des devs à l'équipe"
+        content={content}
+      />
+    );
   }
 }

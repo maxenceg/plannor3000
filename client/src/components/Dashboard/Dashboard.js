@@ -12,7 +12,7 @@ export default class Dashboard extends React.Component {
     return (
       <div style={styles.dashboard}>
         <Menu style={styles.menu} />
-        <ProdPlan/>
+        <ProdPlan />
         {this.props.isEditTeamPopinOpen && <EditTeamPopin />}
         {this.props.isDevSelectionPopinOpen && <DevSelectionPopin />}
         {this.props.isCardDescriptionPopinOpen && <CardDescriptionPopin />}
