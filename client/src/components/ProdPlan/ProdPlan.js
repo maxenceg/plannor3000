@@ -4,7 +4,7 @@ import PlanColumn from '../PlanColumn';
 import ColumnHeader from '../ColumnHeader';
 import HourLine from '../HourLine';
 import CurrentHourLine from '../CurrentHourLine';
-import styles from './ProdPlan.style';
+import './ProdPlan.scss'
 
 export default class ProdPlan extends React.Component {
   render() {
@@ -21,15 +21,15 @@ export default class ProdPlan extends React.Component {
       { id: 8, hour: 17, minute: 0 },
     ];
     return (
-      <div style={{ ...this.props.style, ...styles.container }}>
-        <div style={styles.headerContainer}>
-          <div style={styles.columnHeadersContainer}>
+      <div className="prod-plan">
+        <div className="prod-plan__header__container">
+          <div className="prod-plan__header__columns-container">
             {this.props.devTeamMembers.map(member => (
-              <ColumnHeader key={member.id} style={styles.columnHeader} member={member} />
+              <ColumnHeader key={member.id} member={member} />
             ))}
           </div>
         </div>
-        <div style={styles.planContainer}>
+        <div className="prod-plan__plan__container">
           <CurrentHourLine dayStartTime={dayStartTime} dayEndTime={dayEndTime} />
           {hoursOfTheDay.map(time => (
             <HourLine
@@ -39,12 +39,12 @@ export default class ProdPlan extends React.Component {
               dayEndTime={dayEndTime}
             />
           ))}
-          <div style={styles.columnsContainer}>
+          <div className="prod-plan__plan__columns__container">
             {this.props.devTeamMembers.map(member => {
               if (!this.props.dailyGoalsColumn) {
                 return (
-                  <div key={member.id} style={styles.errorDiv}>
-                    <span style={styles.errorLabel}>
+                  <div key={member.id} className="prod-plan__plan__columns__error__column">
+                    <span className="prod-plan__plan__columns__error__label">
                       Vous n'avez pas sélectionné de colonne 'Daily Goals'
                     </span>
                   </div>

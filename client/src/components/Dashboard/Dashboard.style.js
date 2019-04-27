@@ -15,12 +15,6 @@ const styles = {
     WebkitBoxShadow: '2px 0 10px #cccccc',
     boxShadow: '2px 0 10px #cccccc',
   },
-  prodPlan: {
-    display: 'flex',
-    flexGrow: 100,
-    flexDirection: 'column',
-    position: 'relative',
-  },
 };
 
 export default styles;
