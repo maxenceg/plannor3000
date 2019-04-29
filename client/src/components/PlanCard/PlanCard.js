@@ -1,9 +1,18 @@
 // @flow
 import React from 'react';
-import { timeInMinutes, durationInMinutes } from '../../helpers';
+import { timeInMinutes, durationInMinutes, getCurrentTime } from '../../helpers';
 import styles from './PlanCard.style';
 
 export default class PlanCard extends React.Component {
+  componentWillMount() {
+    this.props.devName &&
+      setTimeout(() => {
+        new Notification('JP alert: Ticket #' + this.props.card.idShort, {
+          body: this.props.devName + ' should finish their ticket in 30 minutes!',
+          requireInteraction: true,
+        });
+      }, (durationInMinutes(getCurrentTime(), this.props.card.endTime) - 30) * 60000);
+  }
   render() {
     const handleClick = event => {
       event.stopPropagation();
