@@ -2,7 +2,6 @@ const styles = {
   cardContainer: {
     display: 'flex',
     flexDirection: 'column',
-    justifyContent: 'space-between',
     cursor: 'pointer',
     width: '100%',
     backgroundColor: '#2196f3dd',
@@ -17,6 +16,7 @@ const styles = {
   footerIcon: {
     display: 'flex',
     flexDirection: 'row-reverse',
+    marginTop: 'auto',
   },
   icon: {
     cursor: 'pointer',
