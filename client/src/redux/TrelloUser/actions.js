@@ -24,6 +24,11 @@ export const constants = {
     SUCCESS: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_SUCCESS',
     ERROR: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_ERROR',
   },
+  FETCH_CARD_CHECKLISTS: {
+    REQUEST: 'FETCH_CARD_CHECKLISTS_REQUEST',
+    SUCCESS: 'FETCH_CARD_CHECKLISTS_SUCCESS',
+    ERROR: 'FETCH_CARD_CHECKLISTS_ERROR',
+  },
   FETCH_TRELLO_USER_BOARD_MEMBERS: {
     REQUEST: 'FETCH_TRELLO_USER_BOARD_MEMBERS_REQUEST',
     SUCCESS: 'FETCH_TRELLO_USER_BOARD_MEMBERS_SUCCESS',
@@ -224,6 +229,38 @@ export const fetchSprintBacklogCards = column => {
       { fields: 'idShort,name,idMembers,labels,desc' },
       data => dispatch(fetchTrelloUserSprintBacklogCardsSuccess(data)),
       error => dispatch(fetchTrelloUserSprintBacklogCardsError(error)),
+    );
+  };
+};
+
+export function fetchCardChecklistsRequest() {
+  return {
+    type: constants.FETCH_CARD_CHECKLISTS.REQUEST,
+  };
+}
+
+export function fetchCardChecklistsSuccess(card, checklists) {
+  return {
+    type: constants.FETCH_CARD_CHECKLISTS.SUCCESS,
+    payload: { card, checklists },
+  };
+}
+
+export function ffetchCardChecklistsError(error) {
+  return {
+    type: constants.FETCH_CARD_CHECKLISTS.ERROR,
+    payload: { errorMessage: error.message },
+  };
+}
+
+export const fetchCardChecklists = card => {
+  return dispatch => {
+    dispatch(fetchCardChecklistsRequest());
+    window.Trello.get(
+      `cards/` + card + `/checklists`,
+      { fields: 'checkItems,name' },
+      data => dispatch(fetchCardChecklistsSuccess(card, data)),
+      error => dispatch(ffetchCardChecklistsError(error)),
     );
   };
 };

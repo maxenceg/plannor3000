@@ -77,6 +77,7 @@ export default class Menu extends React.Component {
       this.props.addDevSelectionCard(card);
     };
     const openCardDescriptionPopin = card => {
+      this.props.fetchCardChecklists(card.id);
       this.props.toggleCardDescriptionPopin(card);
     };
     return (

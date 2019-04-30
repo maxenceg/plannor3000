@@ -8,6 +8,7 @@ import {
   addTrelloUserDailyGoalsColumn,
   addTrelloUserSprintColumn,
   fetchSprintBacklogCards,
+  fetchCardChecklists,
 } from 'redux/TrelloUser/actions';
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
@@ -52,6 +53,7 @@ const mapDispatchToProps = {
   addDevSelectionCard,
   addTrelloUserSprintColumn,
   fetchSprintBacklogCards,
+  fetchCardChecklists,
 };
 
 export default connect(

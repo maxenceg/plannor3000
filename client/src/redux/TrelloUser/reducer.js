@@ -114,6 +114,25 @@ export default function reducer(state = initialState, action) {
           },
         },
       };
+    case constants.FETCH_CARD_CHECKLISTS.SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          sprintColumn: {
+            ...state.user.sprintColumn,
+            cards: state.user.sprintColumn.cards.map(card => {
+              if (card.id === action.payload.card) {
+                return {
+                  ...card,
+                  checklists: action.payload.checklists,
+                };
+              }
+              return card;
+            }),
+          },
+        },
+      };
     case constants.FETCH_TRELLO_USER_BOARD_MEMBERS.SUCCESS:
       return {
         ...state,
