@@ -1,28 +1,31 @@
 // @flow
 import React from 'react';
-import BasicButton from '../BasicButton';
-import styles from './ButtonsPanel.style';
+import './ButtonsPanel.scss'
+import BasicButtonPlannor from '../BasicButtonPlannor/BasicButtonPlannor';
 
 export default class ButtonsPanel extends React.Component {
   render() {
     return (
-      <div style={this.props.style}>
-        <BasicButton
-          style={{ ...styles.panelButton, ...styles.settingsButton }}
-          label={<i className="material-icons">settings</i>}
-        />
+      <div className="buttons-panel__container">
+        {/*<div className="buttons-panel__button">*/}
+          {/*<BasicButton*/}
+            {/*label={<i className="material-icons">settings</i>}*/}
+          {/*/>*/}
+        {/*</div>*/}
         {!!this.props.isTeamEditable && (
-          <BasicButton
-            style={{ ...styles.panelButton, ...styles.editTeamButton }}
-            label={<i className="material-icons">people</i>}
-            onClickAction={this.props.editTeamAction}
-          />
+          <div className="buttons-panel__button">
+            <BasicButtonPlannor
+              label={<i className="material-icons">people</i>}
+              onClickAction={this.props.editTeamAction}
+            />
+          </div>
         )}
-        <BasicButton
-          style={{ ...styles.panelButton, ...styles.refreshButton }}
-          label={<i className="material-icons">refresh</i>}
-          onClickAction={this.props.refreshAction}
-        />
+        <div className="buttons-panel__button">
+          <BasicButtonPlannor
+            label={<i className="material-icons">refresh</i>}
+            onClickAction={this.props.refreshAction}
+          />
+        </div>
       </div>
     );
   }
