@@ -172,16 +172,17 @@ export default function reducer(state = initialState, action) {
           }),
         },
       };
-    case constants.ADD_CARD_TO_DEV_DAILY_CARDS:
+    case constants.TAG_DEV_ON_PLANNOR_CARD:
       return {
         ...state,
-        project: {
-          ...state.project,
-          devTeam: state.project.devTeam.map(dev =>
-            dev.id === action.payload.devId
-              ? { ...dev, dailyCards: [...dev.dailyCards, action.payload.card] }
-              : dev,
-          ),
+        user: {
+          ...state.user,
+          sprintColumn: {
+            ...state.user.sprintColumn,
+            cards: state.user.sprintColumn.cards.map(card =>
+              card.id === action.payload.cardId ? { ...card, devs: [action.payload.devId] } : card,
+            ),
+          },
         },
       };
     case constants.REMOVE_CARDS_FROM_SPRINT_BACKLOG:
