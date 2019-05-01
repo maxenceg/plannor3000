@@ -66,8 +66,12 @@ export default class Menu extends React.Component {
       this.props.fetchSprintBacklogCards(event.target.value);
     };
     const refreshAction = () => {
-      this.props.fetchTrelloUserColumns(this.props.trelloUserSelectedBoard);
-      this.props.fetchDailyGoalsCards(this.props.trelloUserDailyGoalsColumn);
+      this.props.trelloUserSelectedBoard &&
+        this.props.fetchTrelloUserColumns(this.props.trelloUserSelectedBoard);
+      this.props.trelloUserDailyGoalsColumn &&
+        this.props.fetchDailyGoalsCards(this.props.trelloUserDailyGoalsColumn);
+      this.props.trelloUserSprintColumn &&
+        this.props.fetchSprintBacklogCards(this.props.trelloUserSprintColumn);
     };
     const editTeamAction = () => {
       this.props.toggleEditTeamPopin();
