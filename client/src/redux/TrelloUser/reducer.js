@@ -110,7 +110,14 @@ export default function reducer(state = initialState, action) {
           ...state.user,
           sprintColumn: {
             ...state.user.sprintColumn,
-            cards: action.payload.cards,
+            cards: action.payload.cards.map(card => {
+              return {
+                ...card,
+                devs: [],
+                startTime: { hour: 10, minute: 0 },
+                endTime: { hour: 12, minute: 30 },
+              };
+            }),
           },
         },
       };

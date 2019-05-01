@@ -1,2 +1,2 @@
 // @flow
-export { default } from './PlanColumn.js';
+export { default } from './PlanColumn.wrap.js';

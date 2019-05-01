@@ -5,10 +5,16 @@ import PlanCard from '../PlanCard';
 
 export default class PlanColumn extends React.Component {
   render() {
+    const editDevSelection = () => {
+      this.props.toggleDevSelectionPopin();
+    };
+
+    const cards = this.props.getCardsOfDev(this.props.member.id);
+
     return (
       <div style={styles.container}>
         <div style={{ ...this.props.style, ...styles.grid }}>
-          {this.props.cards.map(card => {
+          {cards.map(card => {
             return (
               <PlanCard
                 key={card.id}
