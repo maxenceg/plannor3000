@@ -19,7 +19,7 @@ export default class PlanColumn extends React.Component {
                 startTime={card.startTime}
                 endTime={card.endTime}
                 content={card.name}
-                icon={{ name: 'delete' }}
+                icons={[{ name: 'edit', action: editDevSelection }]}
               />
             );
           })}
