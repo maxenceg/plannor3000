@@ -11,7 +11,7 @@ export default class CardDescriptionPopin extends React.Component {
           {this.props.card.checklists &&
             this.props.card.checklists.length > 0 &&
             this.props.card.checklists.map(checklist => (
-              <div>
+              <div key={checklist.id}>
                 {checklist.name}
                 <ul key={checklist.id}>
                   {checklist.checkItems.map(checkItem => (
