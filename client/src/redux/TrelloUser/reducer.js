@@ -15,6 +15,10 @@ export const initialState = {
       id: '',
       cards: [],
     },
+    toValidateColumn: {
+      id: '',
+      cards: [],
+    },
     boardMembers: [],
   },
   project: {
@@ -90,6 +94,14 @@ export default function reducer(state = initialState, action) {
         user: {
           ...state.user,
           sprintColumn: { ...state.user.sprintColumn, id: action.payload.column },
+        },
+      };
+    case constants.ADD_TRELLO_USER_TO_VALIDATE_COLUMN:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          toValidateColumn: { ...state.user.sprintColumn, id: action.payload.column },
         },
       };
     case constants.FETCH_TRELLO_USER_DAILY_GOALS_CARDS.SUCCESS:

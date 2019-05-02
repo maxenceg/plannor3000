@@ -7,6 +7,7 @@ import {
   addTrelloUserSelectedBoard,
   addTrelloUserDailyGoalsColumn,
   addTrelloUserSprintColumn,
+  addTrelloUserToValidateColumn,
   fetchSprintBacklogCards,
   fetchCardChecklists,
 } from 'redux/TrelloUser/actions';
@@ -21,6 +22,7 @@ import {
   getTrelloUserDailyGoalsCards,
   getTrelloUserSprintColumn,
   getTrelloUserSprintBacklogCards,
+  getTrelloUserToValidateColumn,
 } from 'redux/TrelloUser';
 import {
   toggleEditTeamPopin,
@@ -38,6 +40,7 @@ const mapStateToProps = state => ({
   trelloUserDailyGoalsCards: getTrelloUserDailyGoalsCards(state),
   trelloUserSprintColumn: getTrelloUserSprintColumn(state),
   trelloUserSprintBacklogCards: getTrelloUserSprintBacklogCards(state),
+  trelloUserToValidateColumn: getTrelloUserToValidateColumn(state),
 });
 
 const mapDispatchToProps = {
@@ -47,6 +50,7 @@ const mapDispatchToProps = {
   fetchDailyGoalsCards,
   addTrelloUserSelectedBoard,
   addTrelloUserDailyGoalsColumn,
+  addTrelloUserToValidateColumn,
   toggleEditTeamPopin,
   toggleDevSelectionPopin,
   toggleCardDescriptionPopin,
