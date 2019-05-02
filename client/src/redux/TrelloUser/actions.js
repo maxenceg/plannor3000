@@ -48,7 +48,7 @@ export const constants = {
   ADD_TRELLO_USER_DAILY_GOALS_COLUMN: 'ADD_TRELLO_USER_DAILY_GOALS_COLUMN',
   ADD_TRELLO_USER_SPRINT_COLUMN: 'ADD_TRELLO_USER_SPRINT_COLUMN',
   TOGGLE_TRELLO_TEAM_MEMBERSHIP: 'TOGGLE_TRELLO_TEAM_MEMBERSHIP',
-  ADD_CARD_TO_DEV_DAILY_CARDS: 'ADD_CARD_TO_DEV_DAILY_CARDS',
+  TAG_DEV_ON_PLANNOR_CARD: 'TAG_DEV_ON_PLANNOR_CARD',
   REMOVE_CARDS_FROM_SPRINT_BACKLOG: 'REMOVE_CARDS_FROM_SPRINT_BACKLOG',
 };
 
@@ -323,10 +323,10 @@ export function tagDevsOnCardError(error) {
   };
 }
 
-export function addCardToDevDailyCards(devId, card) {
+export function tagDevOnPlannorCard(devId, cardId) {
   return {
-    type: constants.ADD_CARD_TO_DEV_DAILY_CARDS,
-    payload: { devId, card },
+    type: constants.TAG_DEV_ON_PLANNOR_CARD,
+    payload: { devId, cardId },
   };
 }
 
@@ -335,7 +335,7 @@ export function tagDevsOnCard(card, membersId) {
     dispatch(tagDevsOnCardRequest());
     membersId.forEach(memberId => {
       if (window.Trello.post(`cards/` + card.id + '/idMembers', { value: memberId })) {
-        dispatch(addCardToDevDailyCards(memberId, card));
+        dispatch(tagDevOnPlannorCard(memberId, card.id));
       }
     });
   };

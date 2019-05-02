@@ -15,7 +15,7 @@ const styles = {
   },
   footerIcon: {
     display: 'flex',
-    flexDirection: 'row-reverse',
+    justifyContent: 'flex-end',
     marginTop: 'auto',
   },
   icon: {

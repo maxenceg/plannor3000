@@ -14,9 +14,9 @@ export default class PlanCard extends React.Component {
       }, (durationInMinutes(getCurrentTime(), this.props.card.endTime) - 30) * 60000);
   }
   render() {
-    const handleClick = event => {
+    const handleClick = (event, clickAction) => {
       event.stopPropagation();
-      this.props.icon.action();
+      clickAction();
     };
 
     const topProp =
@@ -50,9 +50,15 @@ export default class PlanCard extends React.Component {
         </div>
         <div style={styles.cardName}>{this.props.card.name}</div>
         <div style={styles.footerIcon}>
-          <i style={styles.icon} className="material-icons" onClick={handleClick}>
-            {this.props.icon.name}
-          </i>
+          {this.props.icons.map(icon => (
+            <i
+              style={styles.icon}
+              className="material-icons"
+              onClick={event => handleClick(event, icon.action)}
+            >
+              {icon.name}
+            </i>
+          ))}
         </div>
       </div>
     );

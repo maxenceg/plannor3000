@@ -131,10 +131,12 @@ export default class Menu extends React.Component {
                 style={styles.planCard}
                 key={card.id}
                 card={card}
-                icon={{
-                  name: 'arrow_right_alt',
-                  action: () => openDevSelectionPopin(card),
-                }}
+                icons={[
+                  {
+                    name: 'arrow_right_alt',
+                    action: () => openDevSelectionPopin(card),
+                  },
+                ]}
                 cardAction={() => openCardDescriptionPopin(card)}
               />
             ))}
