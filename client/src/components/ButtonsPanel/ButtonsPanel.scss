@@ -1,0 +1,18 @@
+.buttons-panel {
+  &__container {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__button {
+    min-width: auto;
+    min-height: auto;
+    width: 32px;
+    height: 32px;
+    padding: 0;
+
+    &:not(:last-child) {
+      margin-right: 5px;
+    }
+  }
+}
