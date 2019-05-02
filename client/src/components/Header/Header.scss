@@ -1,8 +1,10 @@
+@import "assets/sass/stylesheet.scss";
+
 .header {
-  background-color: #2196f3;
+  background-color: $primary-color-1;
   padding: 15px;
   font-size: 20px;
-  font-family:'Roboto', serif;
+  font-family:$roboto-regular-stack;
   color: white;
 
   &__logo {
