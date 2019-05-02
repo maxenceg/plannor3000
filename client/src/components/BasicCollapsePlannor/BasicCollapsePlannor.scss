@@ -1,0 +1,23 @@
+@import "assets/sass/stylesheet.scss";
+
+.basic-collapse-plannor {
+  &__title {
+    &__container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid $secondary-color-3;
+      font-family: $roboto-regular-stack;
+      font-size: 19px;
+      color: $secondary-color-5;
+    }
+
+    &__button {
+      cursor: pointer;
+
+      &__icon {
+        font-size: 25px;
+      }
+    }
+  }
+}
