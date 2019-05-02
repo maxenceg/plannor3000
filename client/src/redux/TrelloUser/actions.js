@@ -246,7 +246,7 @@ export function fetchCardChecklistsSuccess(card, checklists) {
   };
 }
 
-export function ffetchCardChecklistsError(error) {
+export function fetchCardChecklistsError(error) {
   return {
     type: constants.FETCH_CARD_CHECKLISTS.ERROR,
     payload: { errorMessage: error.message },
@@ -260,7 +260,7 @@ export const fetchCardChecklists = card => {
       `cards/` + card + `/checklists`,
       { fields: 'checkItems,name' },
       data => dispatch(fetchCardChecklistsSuccess(card, data)),
-      error => dispatch(ffetchCardChecklistsError(error)),
+      error => dispatch(fetchCardChecklistsError(error)),
     );
   };
 };
