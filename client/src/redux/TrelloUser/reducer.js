@@ -179,7 +179,7 @@ export default function reducer(state = initialState, action) {
           }),
         },
       };
-    case constants.TAG_DEV_ON_PLANNOR_CARD:
+    case constants.TAG_DEVS_ON_PLANNOR_CARD:
       return {
         ...state,
         user: {
@@ -187,7 +187,7 @@ export default function reducer(state = initialState, action) {
           sprintColumn: {
             ...state.user.sprintColumn,
             cards: state.user.sprintColumn.cards.map(card =>
-              card.id === action.payload.cardId ? { ...card, devs: [action.payload.devId] } : card,
+              card.id === action.payload.cardId ? { ...card, devs: action.payload.devIds } : card,
             ),
           },
         },
