@@ -9,7 +9,6 @@ import './Header.scss'
 import frMessages from 'translations/fr.json';
 import enMessages from 'translations/en.json';
 import { flattenMessages } from 'services/i18n/intl';
-import styles from './Header.style';
 
 const locales = {
   fr: flattenMessages(frMessages),
