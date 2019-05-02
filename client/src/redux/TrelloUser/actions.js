@@ -47,6 +47,7 @@ export const constants = {
   ADD_TRELLO_USER_SELECTED_BOARD: 'ADD_TRELLO_USER_SELECTED_BOARD',
   ADD_TRELLO_USER_DAILY_GOALS_COLUMN: 'ADD_TRELLO_USER_DAILY_GOALS_COLUMN',
   ADD_TRELLO_USER_SPRINT_COLUMN: 'ADD_TRELLO_USER_SPRINT_COLUMN',
+  ADD_TRELLO_USER_TO_VALIDATE_COLUMN: 'ADD_TRELLO_USER_TO_VALIDATE_COLUMN',
   TOGGLE_TRELLO_TEAM_MEMBERSHIP: 'TOGGLE_TRELLO_TEAM_MEMBERSHIP',
   TAG_DEVS_ON_PLANNOR_CARD: 'TAG_DEVS_ON_PLANNOR_CARD',
   REMOVE_CARDS_FROM_SPRINT_BACKLOG: 'REMOVE_CARDS_FROM_SPRINT_BACKLOG',
@@ -129,6 +130,13 @@ export function addTrelloUserDailyGoalsColumn(column) {
 export function addTrelloUserSprintColumn(column) {
   return {
     type: constants.ADD_TRELLO_USER_SPRINT_COLUMN,
+    payload: { column },
+  };
+}
+
+export function addTrelloUserToValidateColumn(column) {
+  return {
+    type: constants.ADD_TRELLO_USER_TO_VALIDATE_COLUMN,
     payload: { column },
   };
 }
