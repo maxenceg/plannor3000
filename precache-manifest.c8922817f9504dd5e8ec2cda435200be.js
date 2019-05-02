@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "21e34e25d4128210ce94",
+    "revision": "8a43a15396b9d3d6628d",
     "url": "/plannor3000/static/css/main.b71a0bed.chunk.css"
   },
   {
-    "revision": "21e34e25d4128210ce94",
-    "url": "/plannor3000/static/js/main.21e34e25.chunk.js"
+    "revision": "8a43a15396b9d3d6628d",
+    "url": "/plannor3000/static/js/main.8a43a153.chunk.js"
   },
   {
-    "revision": "97180439fbdf3c19f9b1",
-    "url": "/plannor3000/static/js/1.97180439.chunk.js"
+    "revision": "f5fe105cd9ede5b34f7c",
+    "url": "/plannor3000/static/js/1.f5fe105c.chunk.js"
   },
   {
     "revision": "e5abb5bd8b7f75136899",
@@ -20,7 +20,7 @@ self.__precacheManifest = [
     "url": "/plannor3000/static/media/plannor3000-logo.45f80eb7.svg"
   },
   {
-    "revision": "cdd71440c4a1a699b789a774fa77cf4b",
+    "revision": "fd214b862c91ec08e517da3bbf552c92",
     "url": "/plannor3000/index.html"
   }
 ];
