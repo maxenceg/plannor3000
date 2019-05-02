@@ -5,7 +5,8 @@ import PlanCard from '../PlanCard';
 
 export default class PlanColumn extends React.Component {
   render() {
-    const editDevSelection = () => {
+    const editDevSelection = card => {
+      this.props.addDevSelectionCard(card);
       this.props.toggleDevSelectionPopin();
     };
 
@@ -25,7 +26,7 @@ export default class PlanColumn extends React.Component {
                 startTime={card.startTime}
                 endTime={card.endTime}
                 content={card.name}
-                icons={[{ name: 'edit', action: editDevSelection }]}
+                icons={[{ name: 'edit', action: () => editDevSelection(card) }]}
               />
             );
           })}
