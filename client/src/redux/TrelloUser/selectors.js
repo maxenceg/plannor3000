@@ -8,7 +8,7 @@ export const getTrelloUserDailyGoalsCards = state =>
   state.trelloUserState.user.dailyGoalsColumn.cards;
 export const getTrelloUserSprintColumn = state => state.trelloUserState.user.sprintColumn.id;
 export const getTrelloUserSprintBacklogCards = state =>
-  state.trelloUserState.user.sprintColumn.cards;
+  state.trelloUserState.user.sprintColumn.cards.filter(card => card.devs.length === 0);
 export const getCardChecklists = (state, cardId) =>
   state.trelloUserState.user.sprintColumn.cards.filter(card => {
     if (card.id === cardId) {
