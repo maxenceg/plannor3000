@@ -17,6 +17,21 @@ export const getCardChecklists = (state, cardId) =>
       return card.checklists;
     }
   });
+export const getFlowColumns = state => {
+  const dailyGoalsColumn = getTrelloUserDailyGoalsColumn(state);
+  const toValidateColumn = getTrelloUserToValidateColumn(state);
+  if (dailyGoalsColumn && toValidateColumn) {
+    const flowColumns = [...state.trelloUserState.user.columns];
+    const firstIndex = state.trelloUserState.user.columns.findIndex(
+      column => column.id === dailyGoalsColumn,
+    );
+    const lastIndex = state.trelloUserState.user.columns.findIndex(
+      column => column.id === toValidateColumn,
+    );
+    return flowColumns.splice(firstIndex - 1, lastIndex - firstIndex);
+  }
+  return [];
+};
 export const getTrelloUserBoardMembers = state => state.trelloUserState.user.boardMembers;
 export const getTrelloUserBoardMembersOrigin = state =>
   state.trelloUserState.user.boardMembersOrigin;
