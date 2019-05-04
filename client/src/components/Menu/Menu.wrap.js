@@ -23,6 +23,7 @@ import {
   getTrelloUserSprintColumn,
   getTrelloUserSprintBacklogCards,
   getTrelloUserToValidateColumn,
+  getFlowColumns,
 } from 'redux/TrelloUser';
 import {
   toggleEditTeamPopin,
@@ -41,6 +42,7 @@ const mapStateToProps = state => ({
   trelloUserSprintColumn: getTrelloUserSprintColumn(state),
   trelloUserSprintBacklogCards: getTrelloUserSprintBacklogCards(state),
   trelloUserToValidateColumn: getTrelloUserToValidateColumn(state),
+  flowColumns: getFlowColumns(state),
 });
 
 const mapDispatchToProps = {

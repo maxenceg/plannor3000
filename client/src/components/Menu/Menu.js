@@ -5,6 +5,7 @@ import BasicSelect from '../BasicSelect';
 import ButtonsPanel from '../ButtonsPanel';
 import PlanCard from '../PlanCard';
 import styles from './Menu.style';
+import BasicCollapsePlannor from '../BasicCollapsePlannor';
 
 export default class Menu extends React.Component {
   componentWillMount() {
@@ -139,6 +140,9 @@ export default class Menu extends React.Component {
           </div>
         )}
         <div style={styles.cardsContainer}>
+          {this.props.flowColumns.map(column => (
+            <BasicCollapsePlannor key={column.id} title={column.name} />
+          ))}
           {this.props.trelloUserSprintBacklogCards.length > 0 &&
             this.props.trelloUserSprintBacklogCards.map(card => (
               <PlanCard
