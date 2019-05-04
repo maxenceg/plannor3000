@@ -8,7 +8,7 @@ import {
   addTrelloUserDailyGoalsColumn,
   addTrelloUserSprintColumn,
   addTrelloUserToValidateColumn,
-  fetchSprintBacklogCards,
+  fetchCardsFromColumn,
   fetchCardChecklists,
 } from 'redux/TrelloUser/actions';
 import { connect } from 'react-redux';
@@ -58,7 +58,7 @@ const mapDispatchToProps = {
   toggleCardDescriptionPopin,
   addDevSelectionCard,
   addTrelloUserSprintColumn,
-  fetchSprintBacklogCards,
+  fetchCardsFromColumn,
   fetchCardChecklists,
 };
 

@@ -64,7 +64,7 @@ export default class Menu extends React.Component {
     };
     const handleSprintColumnChange = event => {
       this.props.addTrelloUserSprintColumn(event.target.value);
-      this.props.fetchSprintBacklogCards(event.target.value);
+      this.props.fetchCardsFromColumn(event.target.value);
     };
     const handleToValidateColumnChange = event => {
       this.props.addTrelloUserToValidateColumn(event.target.value);
@@ -75,7 +75,7 @@ export default class Menu extends React.Component {
       this.props.trelloUserDailyGoalsColumn &&
         this.props.fetchDailyGoalsCards(this.props.trelloUserDailyGoalsColumn);
       this.props.trelloUserSprintColumn &&
-        this.props.fetchSprintBacklogCards(this.props.trelloUserSprintColumn);
+        this.props.fetchCardsFromColumn(this.props.trelloUserSprintColumn);
     };
     const editTeamAction = () => {
       this.props.toggleEditTeamPopin();

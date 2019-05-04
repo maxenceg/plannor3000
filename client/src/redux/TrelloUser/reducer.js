@@ -115,7 +115,7 @@ export default function reducer(state = initialState, action) {
           },
         },
       };
-    case constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.SUCCESS:
+    case constants.FETCH_CARDS_FROM_COLUMN.SUCCESS:
       return {
         ...state,
         user: {
