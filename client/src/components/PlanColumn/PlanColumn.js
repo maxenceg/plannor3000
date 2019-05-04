@@ -2,6 +2,7 @@
 import React from 'react';
 import styles from './PlanColumn.style.js';
 import PlanCard from '../PlanCard';
+import map from 'lodash/map';
 
 export default class PlanColumn extends React.Component {
   render() {
@@ -14,7 +15,7 @@ export default class PlanColumn extends React.Component {
     return (
       <div style={styles.container}>
         <div style={{ ...this.props.style, ...styles.grid }}>
-          {cards.map(card => {
+          {map(cards, card => {
             return (
               <PlanCard
                 key={card.id}

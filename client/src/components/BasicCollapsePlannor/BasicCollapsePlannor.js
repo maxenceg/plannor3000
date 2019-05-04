@@ -10,15 +10,12 @@ class BasicCollapsePlannor extends Component {
 
   render() {
     return (
-      <div onClick={this.toggleCollapse}>
-        <div className={'basic-collapse-plannor__title__container'}>
+      <div>
+        <div onClick={this.toggleCollapse} className={'basic-collapse-plannor__title__container'}>
           {this.props.title}
-          <div>
-            <i className="material-icons basic-collapse-plannor__title__button__icon">
-              {this.state.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
-            </i>
-            <i className="material-icons basic-collapse-plannor__title__button__icon" />
-          </div>
+          <i className="material-icons basic-collapse-plannor__title__button__icon">
+            {this.state.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
+          </i>
         </div>
         {!this.state.isCollapsed && this.props.children}
       </div>

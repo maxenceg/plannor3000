@@ -6,6 +6,7 @@ import ButtonsPanel from '../ButtonsPanel';
 import PlanCard from '../PlanCard';
 import styles from './Menu.style';
 import BasicCollapsePlannor from '../BasicCollapsePlannor';
+import map from 'lodash/map';
 
 export default class Menu extends React.Component {
   componentWillMount() {
@@ -68,6 +69,9 @@ export default class Menu extends React.Component {
     };
     const handleToValidateColumnChange = event => {
       this.props.addTrelloUserToValidateColumn(event.target.value);
+    };
+    const toggleDropdown = columnId => {
+      this.props.fetchCardsFromColumn(columnId);
     };
     const refreshAction = () => {
       this.props.trelloUserSelectedBoard &&
@@ -141,23 +145,29 @@ export default class Menu extends React.Component {
         )}
         <div style={styles.cardsContainer}>
           {this.props.flowColumns.map(column => (
-            <BasicCollapsePlannor key={column.id} title={column.name} />
+            <span key={column.id} onClick={() => toggleDropdown(column.id)}>
+              <BasicCollapsePlannor title={column.name}>
+                {map(
+                  this.props.getCardsFromColumn(column.id),
+                  card =>
+                    card.devs.length === 0 && (
+                      <PlanCard
+                        style={styles.planCard}
+                        key={card.id}
+                        card={card}
+                        icons={[
+                          {
+                            name: 'arrow_right_alt',
+                            action: () => openDevSelectionPopin(card),
+                          },
+                        ]}
+                        cardAction={() => openCardDescriptionPopin(card)}
+                      />
+                    ),
+                )}
+              </BasicCollapsePlannor>
+            </span>
           ))}
-          {this.props.trelloUserSprintBacklogCards.length > 0 &&
-            this.props.trelloUserSprintBacklogCards.map(card => (
-              <PlanCard
-                style={styles.planCard}
-                key={card.id}
-                card={card}
-                icons={[
-                  {
-                    name: 'arrow_right_alt',
-                    action: () => openDevSelectionPopin(card),
-                  },
-                ]}
-                cardAction={() => openCardDescriptionPopin(card)}
-              />
-            ))}
         </div>
       </div>
     );

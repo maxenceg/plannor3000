@@ -1,4 +1,5 @@
 import { constants } from './actions';
+import reduce from 'lodash/reduce';
 
 export const initialState = {
   user: {
@@ -7,6 +8,7 @@ export const initialState = {
     boards: [],
     selectedBoard: '',
     columns: [],
+    cards: {},
     dailyGoalsColumn: {
       id: '',
       cards: [],
@@ -116,20 +118,31 @@ export default function reducer(state = initialState, action) {
         },
       };
     case constants.FETCH_CARDS_FROM_COLUMN.SUCCESS:
+      const stateCards = state.user.cards;
+      const fetchedCards = action.payload.cards;
+      const fetchedPlannorCards = reduce(
+        fetchedCards,
+        (cardsAccumulator, card) => {
+          return {
+            ...cardsAccumulator,
+            [card.id]: {
+              ...card,
+              devs: [],
+              startTime: { hour: 10, minute: 0 },
+              endTime: { hour: 12, minute: 30 },
+              column: action.payload.column,
+            },
+          };
+        },
+        {},
+      );
       return {
         ...state,
         user: {
           ...state.user,
-          sprintColumn: {
-            ...state.user.sprintColumn,
-            cards: action.payload.cards.map(card => {
-              return {
-                ...card,
-                devs: [],
-                startTime: { hour: 10, minute: 0 },
-                endTime: { hour: 12, minute: 30 },
-              };
-            }),
+          cards: {
+            ...fetchedPlannorCards,
+            ...stateCards,
           },
         },
       };
@@ -196,11 +209,12 @@ export default function reducer(state = initialState, action) {
         ...state,
         user: {
           ...state.user,
-          sprintColumn: {
-            ...state.user.sprintColumn,
-            cards: state.user.sprintColumn.cards.map(card =>
-              card.id === action.payload.cardId ? { ...card, devs: action.payload.devIds } : card,
-            ),
+          cards: {
+            ...state.user.cards,
+            [action.payload.cardId]: {
+              ...state.user.cards[action.payload.cardId],
+              devs: action.payload.devIds,
+            },
           },
         },
       };

@@ -167,10 +167,10 @@ export function fetchCardsFromColumnRequest() {
   };
 }
 
-export function fetchCardsFromColumnSuccess(cards) {
+export function fetchCardsFromColumnSuccess(column, cards) {
   return {
     type: constants.FETCH_CARDS_FROM_COLUMN.SUCCESS,
-    payload: { cards },
+    payload: { column, cards },
   };
 }
 
@@ -235,7 +235,7 @@ export const fetchCardsFromColumn = column => {
     window.Trello.get(
       `lists/` + column + `/cards`,
       { fields: 'idShort,name,idMembers,labels,desc' },
-      data => dispatch(fetchCardsFromColumnSuccess(data)),
+      data => dispatch(fetchCardsFromColumnSuccess(column, data)),
       error => dispatch(fetchCardsFromColumnError(error)),
     );
   };
