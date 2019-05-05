@@ -2,7 +2,7 @@ const styles = {
   dashboard: {
     display: 'flex',
     fontFamily: 'Roboto',
-    height: '100vh',
+    height: 'calc(100vh - 53px)',
   },
   menu: {
     display: 'flex',
