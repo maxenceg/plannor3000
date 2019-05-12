@@ -1,14 +1,15 @@
 {
-  "main.css": "/plannor3000/static/css/main.b71a0bed.chunk.css",
-  "main.js": "/plannor3000/static/js/main.8a43a153.chunk.js",
-  "main.js.map": "/plannor3000/static/js/main.8a43a153.chunk.js.map",
-  "static/js/1.f5fe105c.chunk.js": "/plannor3000/static/js/1.f5fe105c.chunk.js",
-  "static/js/1.f5fe105c.chunk.js.map": "/plannor3000/static/js/1.f5fe105c.chunk.js.map",
+  "main.css": "/plannor3000/static/css/main.dc5801e5.chunk.css",
+  "main.js": "/plannor3000/static/js/main.a22b1dc3.chunk.js",
+  "main.js.map": "/plannor3000/static/js/main.a22b1dc3.chunk.js.map",
+  "static/js/1.17e36b5e.chunk.js": "/plannor3000/static/js/1.17e36b5e.chunk.js",
+  "static/js/1.17e36b5e.chunk.js.map": "/plannor3000/static/js/1.17e36b5e.chunk.js.map",
   "runtime~main.js": "/plannor3000/static/js/runtime~main.e5abb5bd.js",
   "runtime~main.js.map": "/plannor3000/static/js/runtime~main.e5abb5bd.js.map",
+  "static/media/App.scss": "/plannor3000/static/media/Roboto-Regular.3e1af3ef.ttf",
   "static/media/plannor3000-logo.45f80eb7.svg": "/plannor3000/static/media/plannor3000-logo.45f80eb7.svg",
-  "static/css/main.b71a0bed.chunk.css.map": "/plannor3000/static/css/main.b71a0bed.chunk.css.map",
+  "static/css/main.dc5801e5.chunk.css.map": "/plannor3000/static/css/main.dc5801e5.chunk.css.map",
   "index.html": "/plannor3000/index.html",
-  "precache-manifest.c8922817f9504dd5e8ec2cda435200be.js": "/plannor3000/precache-manifest.c8922817f9504dd5e8ec2cda435200be.js",
+  "precache-manifest.c66a36d42312911236d194ece74b04ac.js": "/plannor3000/precache-manifest.c66a36d42312911236d194ece74b04ac.js",
   "service-worker.js": "/plannor3000/service-worker.js"
 }
