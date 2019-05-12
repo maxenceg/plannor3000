@@ -11,19 +11,11 @@ class BasicCollapsePlannor extends Component {
   render() {
     return (
       <div>
-        <div className={'basic-collapse-plannor__title__container'}>
+        <div onClick={this.toggleCollapse} className={'basic-collapse-plannor__title__container'}>
           {this.props.title}
-          <div onClick={this.toggleCollapse} className={'basic-collapse-plannor__title__button'}>
-            {this.state.isCollapsed ? (
-              <i className="material-icons basic-collapse-plannor__title__button__icon">
-                keyboard_arrow_down
-              </i>
-            ) : (
-              <i className="material-icons basic-collapse-plannor__title__button__icon">
-                keyboard_arrow_up
-              </i>
-            )}
-          </div>
+          <i className="material-icons basic-collapse-plannor__title__button__icon">
+            {this.state.isCollapsed ? 'keyboard_arrow_down' : 'keyboard_arrow_up'}
+          </i>
         </div>
         {!this.state.isCollapsed && this.props.children}
       </div>

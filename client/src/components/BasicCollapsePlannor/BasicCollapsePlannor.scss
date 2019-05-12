@@ -1,8 +1,9 @@
-@import "assets/sass/stylesheet.scss";
+@import 'assets/sass/stylesheet.scss';
 
 .basic-collapse-plannor {
   &__title {
     &__container {
+      cursor: pointer;
       display: flex;
       justify-content: space-between;
       align-items: center;
@@ -13,8 +14,6 @@
     }
 
     &__button {
-      cursor: pointer;
-
       &__icon {
         font-size: 25px;
       }

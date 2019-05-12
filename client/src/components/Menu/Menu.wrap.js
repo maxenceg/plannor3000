@@ -8,7 +8,7 @@ import {
   addTrelloUserDailyGoalsColumn,
   addTrelloUserSprintColumn,
   addTrelloUserToValidateColumn,
-  fetchSprintBacklogCards,
+  fetchCardsFromColumn,
   fetchCardChecklists,
 } from 'redux/TrelloUser/actions';
 import { connect } from 'react-redux';
@@ -24,6 +24,7 @@ import {
   getTrelloUserSprintBacklogCards,
   getTrelloUserToValidateColumn,
   getFlowColumns,
+  getCardsFromColumn,
 } from 'redux/TrelloUser';
 import {
   toggleEditTeamPopin,
@@ -43,6 +44,7 @@ const mapStateToProps = state => ({
   trelloUserSprintBacklogCards: getTrelloUserSprintBacklogCards(state),
   trelloUserToValidateColumn: getTrelloUserToValidateColumn(state),
   flowColumns: getFlowColumns(state),
+  getCardsFromColumn: columnId => getCardsFromColumn(state, columnId),
 });
 
 const mapDispatchToProps = {
@@ -58,7 +60,7 @@ const mapDispatchToProps = {
   toggleCardDescriptionPopin,
   addDevSelectionCard,
   addTrelloUserSprintColumn,
-  fetchSprintBacklogCards,
+  fetchCardsFromColumn,
   fetchCardChecklists,
 };
 

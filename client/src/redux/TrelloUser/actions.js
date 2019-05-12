@@ -19,10 +19,10 @@ export const constants = {
     SUCCESS: 'FETCH_TRELLO_USER_DAILY_GOALS_CARDS_SUCCESS',
     ERROR: 'FETCH_TRELLO_USER_DAILY_GOALS_CARDS_ERROR',
   },
-  FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS: {
-    REQUEST: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_REQUEST',
-    SUCCESS: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_SUCCESS',
-    ERROR: 'FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS_ERROR',
+  FETCH_CARDS_FROM_COLUMN: {
+    REQUEST: 'FETCH_CARDS_FROM_COLUMN_REQUEST',
+    SUCCESS: 'FETCH_CARDS_FROM_COLUMN_SUCCESS',
+    ERROR: 'FFETCH_CARDS_FROM_COLUMN_ERROR',
   },
   FETCH_CARD_CHECKLISTS: {
     REQUEST: 'FETCH_CARD_CHECKLISTS_REQUEST',
@@ -161,22 +161,22 @@ export function fetchTrelloUserDailyGoalsCardsError(error) {
   };
 }
 
-export function fetchTrelloUserSprintBacklogCardsRequest() {
+export function fetchCardsFromColumnRequest() {
   return {
-    type: constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.REQUEST,
+    type: constants.FETCH_CARDS_FROM_COLUMN.REQUEST,
   };
 }
 
-export function fetchTrelloUserSprintBacklogCardsSuccess(cards) {
+export function fetchCardsFromColumnSuccess(column, cards) {
   return {
-    type: constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.SUCCESS,
-    payload: { cards },
+    type: constants.FETCH_CARDS_FROM_COLUMN.SUCCESS,
+    payload: { column, cards },
   };
 }
 
-export function fetchTrelloUserSprintBacklogCardsError(error) {
+export function fetchCardsFromColumnError(error) {
   return {
-    type: constants.FETCH_TRELLO_USER_SPRINT_BACKLOG_CARDS.ERROR,
+    type: constants.FETCH_CARDS_FROM_COLUMN.ERROR,
     payload: { errorMessage: error.message },
   };
 }
@@ -229,14 +229,14 @@ export const fetchDailyGoalsCards = column => {
   };
 };
 
-export const fetchSprintBacklogCards = column => {
+export const fetchCardsFromColumn = column => {
   return dispatch => {
-    dispatch(fetchTrelloUserSprintBacklogCardsRequest());
+    dispatch(fetchCardsFromColumnRequest());
     window.Trello.get(
       `lists/` + column + `/cards`,
       { fields: 'idShort,name,idMembers,labels,desc' },
-      data => dispatch(fetchTrelloUserSprintBacklogCardsSuccess(data)),
-      error => dispatch(fetchTrelloUserSprintBacklogCardsError(error)),
+      data => dispatch(fetchCardsFromColumnSuccess(column, data)),
+      error => dispatch(fetchCardsFromColumnError(error)),
     );
   };
 };
