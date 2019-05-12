@@ -1,3 +1,5 @@
+@import 'assets/sass/colors.scss';
+
 .plancard {
   display: flex;
   flex-direction: column;
@@ -15,7 +17,7 @@
   &__header {
     display: flex;
     align-items: flex-start;
-    font-size: 11px;
+    font-size: 10px;
 
     &__id-short {
       background-color: yellow;
@@ -66,4 +68,44 @@
       }
     }
   }
+}
+
+.green {
+  background-color: $trello-green;
+}
+
+.yellow {
+  background-color: $trello-yellow;
+}
+
+.orange {
+  background-color: $trello-orange;
+}
+
+.red {
+  background-color: $trello-red;
+}
+
+.purple {
+  background-color: $trello-purple;
+}
+
+.blue {
+  background-color: $trello-blue;
+}
+
+.sky {
+  background-color: $trello-sky;
+}
+
+.pink {
+  background-color: $trello-pink;
+}
+
+.lime {
+  background-color: $trello-lime;
+}
+
+.black {
+  background-color: $trello-black;
 }
