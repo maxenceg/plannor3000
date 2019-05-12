@@ -76,10 +76,8 @@ export default class Menu extends React.Component {
     const refreshAction = () => {
       this.props.trelloUserSelectedBoard &&
         this.props.fetchTrelloUserColumns(this.props.trelloUserSelectedBoard);
-      this.props.trelloUserDailyGoalsColumn &&
-        this.props.fetchDailyGoalsCards(this.props.trelloUserDailyGoalsColumn);
-      this.props.trelloUserSprintColumn &&
-        this.props.fetchCardsFromColumn(this.props.trelloUserSprintColumn);
+      this.props.flowColumns &&
+        this.props.flowColumns.forEach(column => this.props.fetchCardsFromColumn(column.id));
     };
     const editTeamAction = () => {
       this.props.toggleEditTeamPopin();
