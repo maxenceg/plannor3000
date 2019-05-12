@@ -5,6 +5,7 @@ import BasicSelect from '../BasicSelect';
 import ButtonsPanel from '../ButtonsPanel';
 import PlanCard from '../PlanCard';
 import styles from './Menu.style';
+import BasicCollapsePlannor from '../BasicCollapsePlannor';
 
 export default class Menu extends React.Component {
   componentWillMount() {
@@ -48,7 +49,7 @@ export default class Menu extends React.Component {
           return { value: board.id, label: board.name };
         })
       : null;
-    const dailyGoalsSelectOptions = this.props.trelloUserColumns
+    const columnSelectOptions = this.props.trelloUserColumns
       ? this.props.trelloUserColumns.map(function(column) {
           return { value: column.id, label: column.name };
         })
@@ -64,6 +65,9 @@ export default class Menu extends React.Component {
     const handleSprintColumnChange = event => {
       this.props.addTrelloUserSprintColumn(event.target.value);
       this.props.fetchSprintBacklogCards(event.target.value);
+    };
+    const handleToValidateColumnChange = event => {
+      this.props.addTrelloUserToValidateColumn(event.target.value);
     };
     const refreshAction = () => {
       this.props.trelloUserSelectedBoard &&
@@ -114,21 +118,31 @@ export default class Menu extends React.Component {
                   propStyle={styles.boardSelect}
                   value={this.props.trelloUserSprintColumn}
                   handleChange={handleSprintColumnChange}
-                  label="Sélectionnez la colonne Sprint Backlog"
-                  options={dailyGoalsSelectOptions}
+                  label="Sprint Backlog"
+                  options={columnSelectOptions}
                 />
                 <BasicSelect
                   propStyle={styles.boardSelect}
                   value={this.props.trelloUserDailyGoalsColumn}
                   handleChange={handleDailyGoalsChange}
-                  label="Sélectionnez la colonne Daily Goals"
-                  options={dailyGoalsSelectOptions}
+                  label="Daily Goals"
+                  options={columnSelectOptions}
+                />
+                <BasicSelect
+                  propStyle={styles.boardSelect}
+                  value={this.props.trelloUserToValidateColumn}
+                  handleChange={handleToValidateColumnChange}
+                  label="À valider"
+                  options={columnSelectOptions}
                 />
               </div>
             )}
           </div>
         )}
         <div style={styles.cardsContainer}>
+          {this.props.flowColumns.map(column => (
+            <BasicCollapsePlannor key={column.id} title={column.name} />
+          ))}
           {this.props.trelloUserSprintBacklogCards.length > 0 &&
             this.props.trelloUserSprintBacklogCards.map(card => (
               <PlanCard
