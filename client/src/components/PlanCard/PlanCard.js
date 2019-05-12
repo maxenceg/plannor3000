@@ -52,6 +52,7 @@ export default class PlanCard extends React.Component {
         <div style={styles.footerIcon}>
           {this.props.icons.map(icon => (
             <i
+              key={icon.name}
               style={styles.icon}
               className="material-icons"
               onClick={event => handleClick(event, icon.action)}

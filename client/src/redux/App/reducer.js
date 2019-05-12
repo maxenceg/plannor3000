@@ -46,8 +46,6 @@ export default function reducer(state = initialState, action) {
           ...state.devSelectionPopin,
           selectedCard: {
             ...action.payload.card,
-            startTime: { hour: 10, minute: 0 },
-            endTime: { hour: 12, minute: 30 },
           },
         },
       };
