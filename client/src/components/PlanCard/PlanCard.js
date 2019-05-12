@@ -58,8 +58,7 @@ export default class PlanCard extends React.Component {
           <div className="plancard__header__labels-container">
             {this.props.card.labels.map(label => (
               <div
-                style={{ backgroundColor: label.color }}
-                className="plancard__header__labels-container__label"
+                className={'plancard__header__labels-container__label ' + label.color}
                 key={label.name}
               >
                 {label.name}
