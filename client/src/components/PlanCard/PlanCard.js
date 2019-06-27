@@ -74,7 +74,7 @@ export default class PlanCard extends React.Component {
           onMouseEnter={() => setHover(true)}
         >
           {this.props.card.name}
-          <div class="plancard__card-name__fade-out" />
+          <div className="plancard__card-name__fade-out" />
         </div>
         <div className="plancard__footer-icon">
           {this.props.icons.map(icon => (
