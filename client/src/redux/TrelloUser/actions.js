@@ -338,6 +338,30 @@ export function tagDevsOnPlannorCard(devIds, cardId) {
   };
 }
 
+export function addChecklistToCard(card) {
+  var newList = {
+    idCard: card.id,
+    name: 'Plannor 3000',
+    pos: 'bottom',
+  };
+  window.Trello.post('/checklists/', newList, checkList => addCheckListItems(checkList, card));
+}
+
+export function addCheckListItems(checkList, card) {
+  var currentDate = new Date();
+  var formattedCurrentDate =
+    currentDate.getDate() + '/' + currentDate.getMonth() + '/' + currentDate.getFullYear();
+  window.Trello.post('/checklists/' + checkList.id + '/checkItems/', {
+    name: 'Start: ' + card.startTime.hour + ':' + card.startTime.minute,
+  });
+  window.Trello.post('/checklists/' + checkList.id + '/checkItems/', {
+    name: 'End: ' + card.endTime.hour + ':' + card.endTime.minute,
+  });
+  window.Trello.post('/checklists/' + checkList.id + '/checkItems/', {
+    name: 'Day: ' + formattedCurrentDate,
+  });
+}
+
 export function tagDevsOnCard(card, membersId) {
   return dispatch => {
     dispatch(tagDevsOnCardRequest());
@@ -345,6 +369,7 @@ export function tagDevsOnCard(card, membersId) {
     membersId.forEach(memberId => {
       window.Trello.post(`cards/` + card.id + '/idMembers', { value: memberId });
     });
+    addChecklistToCard(card);
   };
 }
 
