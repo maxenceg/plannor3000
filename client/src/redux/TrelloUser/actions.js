@@ -234,8 +234,11 @@ export const fetchCardsFromColumn = column => {
     dispatch(fetchCardsFromColumnRequest());
     window.Trello.get(
       `lists/` + column + `/cards`,
-      { fields: 'idShort,name,idMembers,labels,desc' },
-      data => dispatch(fetchCardsFromColumnSuccess(column, data)),
+      { fields: 'idShort,name,idMembers,labels,desc,idChecklists' },
+      cards => {
+        dispatch(fetchCardsFromColumnSuccess(column, cards));
+        cards.forEach(card => dispatch(fetchCardChecklists(card.id)));
+      },
       error => dispatch(fetchCardsFromColumnError(error)),
     );
   };

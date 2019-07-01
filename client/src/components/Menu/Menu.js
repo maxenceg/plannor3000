@@ -61,14 +61,15 @@ export default class Menu extends React.Component {
     };
     const handleDailyGoalsChange = event => {
       this.props.addTrelloUserDailyGoalsColumn(event.target.value);
-      this.props.fetchDailyGoalsCards(event.target.value);
+      refreshAction();
     };
     const handleSprintColumnChange = event => {
       this.props.addTrelloUserSprintColumn(event.target.value);
-      this.props.fetchCardsFromColumn(event.target.value);
+      refreshAction();
     };
     const handleToValidateColumnChange = event => {
       this.props.addTrelloUserToValidateColumn(event.target.value);
+      refreshAction();
     };
     const toggleDropdown = columnId => {
       this.props.fetchCardsFromColumn(columnId);

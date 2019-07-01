@@ -1,5 +1,6 @@
-import { constants } from './actions';
+import { constants, fetchCardChecklists } from './actions';
 import reduce from 'lodash/reduce';
+import map from 'lodash/map';
 
 export const initialState = {
   user: {
@@ -147,22 +148,20 @@ export default function reducer(state = initialState, action) {
         },
       };
     case constants.FETCH_CARD_CHECKLISTS.SUCCESS:
+      let updatedCardsObject = { ...state.user.cards };
+      console.log(action.payload.card);
+      Object.keys(state.user.cards).map(cardId => {
+        console.log(cardId);
+        if (cardId === action.payload.card) {
+          updatedCardsObject[cardId].checklists = action.payload.checklists;
+        }
+      });
+      console.log(updatedCardsObject);
       return {
         ...state,
         user: {
           ...state.user,
-          sprintColumn: {
-            ...state.user.sprintColumn,
-            cards: state.user.sprintColumn.cards.map(card => {
-              if (card.id === action.payload.card) {
-                return {
-                  ...card,
-                  checklists: action.payload.checklists,
-                };
-              }
-              return card;
-            }),
-          },
+          cards: updatedCardsObject,
         },
       };
     case constants.FETCH_TRELLO_USER_BOARD_MEMBERS.SUCCESS:
