@@ -40,4 +40,25 @@ export const getTrelloUserBoardMembersOrigin = state =>
   state.trelloUserState.user.boardMembersOrigin;
 export const getTrelloUserDevTeam = state => state.trelloUserState.project.devTeam;
 export const getCardsOfDev = (state, devId) =>
-  filter(state.trelloUserState.user.cards, card => card.devs.includes(devId));
+  filter(getPlannorCards(state), card => card.idMembers.includes(devId));
+export const isPlannorCard = card =>
+  card.checklists
+    ? card.checklists.filter(checklist => {
+        if (checklist.name !== 'Plannor 3000') {
+          return false;
+        }
+        let currentDate = new Date();
+        let formattedCurrentDate =
+          currentDate.getDate() + '/' + currentDate.getMonth() + '/' + currentDate.getFullYear();
+        return (
+          checklist.checkItems.filter(item => {
+            if (item.name === 'Day: ' + formattedCurrentDate) {
+              return true;
+            }
+          }).length > 0
+        );
+      }).length
+    : false;
+export const getPlannorCards = state => {
+  return filter(state.trelloUserState.user.cards, card => isPlannorCard(card));
+};

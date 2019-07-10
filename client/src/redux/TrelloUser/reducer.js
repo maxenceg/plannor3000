@@ -209,7 +209,10 @@ export default function reducer(state = initialState, action) {
             ...state.user.cards,
             [action.payload.cardId]: {
               ...state.user.cards[action.payload.cardId],
-              devs: action.payload.devIds,
+              idMembers: {
+                ...state.user.cards[action.payload.cardId].idMembers,
+                ...action.payload.devIds,
+              },
             },
           },
         },
