@@ -23,7 +23,6 @@ export default class CardDescriptionPopin extends React.Component {
         </div>
       </div>
     );
-    console.log(this.props.card);
     return (
       <PlannorPopin
         isOpen={this.props.isCardDescriptionPopinOpen}

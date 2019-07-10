@@ -149,14 +149,11 @@ export default function reducer(state = initialState, action) {
       };
     case constants.FETCH_CARD_CHECKLISTS.SUCCESS:
       let updatedCardsObject = { ...state.user.cards };
-      console.log(action.payload.card);
       Object.keys(state.user.cards).map(cardId => {
-        console.log(cardId);
         if (cardId === action.payload.card) {
           updatedCardsObject[cardId].checklists = action.payload.checklists;
         }
       });
-      console.log(updatedCardsObject);
       return {
         ...state,
         user: {
