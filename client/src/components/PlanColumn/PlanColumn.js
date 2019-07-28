@@ -17,7 +17,12 @@ export default class PlanColumn extends React.Component {
         <div style={{ ...this.props.style, ...styles.grid }}>
           {map(cards, card => {
             let startTime;
-            if (!card.checklists) {
+            if (
+              !card.checklists ||
+              !card.checklists.find(checklist => checklist.name === 'Plannor 3000') ||
+              card.checklists.find(checklist => checklist.name === 'Plannor 3000').checkItems
+                .length === 0
+            ) {
               startTime = { hour: 10, minute: 0 };
             } else {
               const timeData = card.checklists
@@ -29,7 +34,12 @@ export default class PlanColumn extends React.Component {
             }
 
             let endTime;
-            if (!card.checklists) {
+            if (
+              !card.checklists ||
+              !card.checklists.find(checklist => checklist.name === 'Plannor 3000') ||
+              card.checklists.find(checklist => checklist.name === 'Plannor 3000').checkItems
+                .length === 0
+            ) {
               endTime = { hour: 10, minute: 0 };
             } else {
               const timeData = card.checklists

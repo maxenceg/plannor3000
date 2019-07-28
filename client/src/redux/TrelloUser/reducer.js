@@ -1,6 +1,6 @@
 import { constants, fetchCardChecklists } from './actions';
 import reduce from 'lodash/reduce';
-import map from 'lodash/map';
+import union from 'lodash/union';
 
 export const initialState = {
   user: {
@@ -209,10 +209,24 @@ export default function reducer(state = initialState, action) {
             ...state.user.cards,
             [action.payload.cardId]: {
               ...state.user.cards[action.payload.cardId],
-              idMembers: {
-                ...state.user.cards[action.payload.cardId].idMembers,
-                ...action.payload.devIds,
-              },
+              idMembers: union(
+                state.user.cards[action.payload.cardId].idMembers,
+                action.payload.devIds,
+              ),
+            },
+          },
+        },
+      };
+    case constants.MOVE_CARD_TO_DAILY_GOALS.SUCCESS:
+      return {
+        ...state,
+        user: {
+          ...state.user,
+          cards: {
+            ...state.user.cards,
+            [action.payload.cardId]: {
+              ...state.user.cards[action.payload.cardId],
+              column: action.payload.dailyGoalsColumnId,
             },
           },
         },

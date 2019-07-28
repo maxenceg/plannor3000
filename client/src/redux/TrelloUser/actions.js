@@ -382,10 +382,20 @@ export function moveCardToDailyGoalsRequest() {
   };
 }
 
+export function moveCardToDailyGoalsSuccess(cardId, dailyGoalsColumnId) {
+  return {
+    type: constants.MOVE_CARD_TO_DAILY_GOALS.SUCCESS,
+    payload: { cardId, dailyGoalsColumnId },
+  };
+}
+
 export function moveCardToDailyGoals(card, dailyGoalsColumnId) {
   return dispatch => {
-    dispatch(moveCardToDailyGoalsRequest());
-    window.Trello.put(`cards/` + card.id + '/idList', { value: dailyGoalsColumnId });
+    window.Trello.put(`cards/` + card.id + '/idList', { value: dailyGoalsColumnId }).then(() => {
+      dispatch(moveCardToDailyGoalsRequest());
+      dispatch(moveCardToDailyGoalsSuccess(card.id, dailyGoalsColumnId));
+      dispatch(fetchCardsFromColumn(dailyGoalsColumnId));
+    });
   };
 }
 

@@ -40,7 +40,7 @@ export const getTrelloUserBoardMembersOrigin = state =>
   state.trelloUserState.user.boardMembersOrigin;
 export const getTrelloUserDevTeam = state => state.trelloUserState.project.devTeam;
 export const getCardsOfDev = (state, devId) =>
-  filter(getPlannorCards(state), card => card.idMembers.includes(devId));
+  filter(getPlannorCards(state), card => (card.idMembers ? card.idMembers.includes(devId) : false));
 export const isPlannorCard = card =>
   card.checklists
     ? card.checklists.filter(checklist => {
