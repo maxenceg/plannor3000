@@ -11,7 +11,7 @@ export default class PlanCard extends React.Component {
           body: this.props.devName + ' should finish his/her ticket in 30 minutes!',
           requireInteraction: true,
         });
-      }, (durationInMinutes(getCurrentTime(), this.props.card.endTime) - 30) * 60000);
+      }, (durationInMinutes(getCurrentTime(), this.props.endTime) - 30) * 60000);
   }
 
   constructor(props) {
