@@ -11,7 +11,7 @@
         "symfony/console": "4.1.7",
         "symfony/dotenv": "4.1.7",
         "symfony/flex": "1.1.8",
-        "symfony/framework-bundle": "4.1.7",
+        "symfony/framework-bundle": "4.1.12",
         "symfony/maker-bundle": "1.9.0",
         "symfony/yaml": "4.1.7"
     },
